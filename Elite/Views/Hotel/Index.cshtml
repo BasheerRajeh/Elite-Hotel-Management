@@ -1,0 +1,33 @@
+﻿@model Hotel
+@{
+    ViewData["Title"] = "Hotel";
+}
+
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            <a class="btn btn-primary rounded-pill" asp-action="Upsert">Create New</a>
+        </div>
+        <div class="card-body">
+            <table class="table" id="tblData">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.City)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</section>
+
+@section scripts{
+
+    <script src="~/js/hotel.js"></script>
+    <script src="~/assets/vendors/fontawesome/all.min.js"></script>
+}

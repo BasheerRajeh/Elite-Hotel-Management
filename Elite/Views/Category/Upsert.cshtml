@@ -1,0 +1,131 @@
+﻿@model Elite.AppDbContext.Category
+
+@{
+
+    ViewData["Title"] = "Category";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var title = "Create Category";
+}
+
+<section class="section">
+    <div class="card">
+        <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (Model.Id != 0)
+            {
+                <input type="hidden" asp-for="Id" />
+                title = "Edit Category";
+            }
+
+            <div class="card-header">
+                <h4 class="card-title">@title</h4>
+            </div>
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <div class="form-group row align-items-center">
+                                <div class="col-lg-4 col-3">
+                                    <label class="col-form-label" asp-for="Name"></label>
+                                </div>
+                                <div class="col-lg-8 col-9">
+                                    <input asp-for="Name" class="form-control">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row align-items-center">
+                                <div class="col-lg-4 col-3">
+                                    <label class="col-form-label" asp-for="MaxCap"></label>
+                                </div>
+                                <div class="col-lg-8 col-9">
+                                    <input asp-for="MaxCap" class="form-control">
+                                    <span asp-validation-for="MaxCap" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group row align-items-center">
+                                <div class="col-lg-4 col-3">
+                                    <label class="col-form-label" asp-for="PricePerNight"></label>
+                                </div>
+                                <div class="col-lg-8 col-9">
+                                    <div class="input-group">
+
+                                        <input asp-for="PricePerNight" class="form-control"
+                                               aria-label="Dollar amount (with dot and two decimal places)">
+                                        <span class="input-group-text">ل.س</span>
+                                        <span asp-validation-for="PricePerNight" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row align-items-center">
+                                <div class="col-lg-4 col-3">
+                                    <label class="col-form-label" asp-for="ImageUrl"></label>
+                                </div>
+                                <div class="col-lg-8 col-9">
+                                    <input type="file" name="files" id="uploadBox" asp-for="Name" multiple class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group row align-items-center">
+                                <div class="col-lg-4 col-3">
+                                </div>
+
+                                <div class="col-lg-8 col-9">
+                                    @if (Model.Id != 0)
+                                    {
+                                        //Edit button and back to list
+                                        <partial name="_EditAndBackToListButton" model="Model.Id" />
+                                    }
+                                    else
+                                    {
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="submit" onclick="return validateInput()" class="col-lg-12 btn btn-success">Create</button>
+                                            </div>
+
+                                            <div class="col">
+                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            @*                            <label for="basicInput">Basic Input</label>
+                                <input type="text" class="form-control" id="basicInput" placeholder="Enter email">
+                            *@
+                        </div>
+                    </div>
+                    @if (Model.Id != 0)
+                    {
+                        <div class="col-sm-12 col-md-5 ">
+                            <img src="@Model.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" alt="Category image" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        function validateInput() {
+            if (document.getElementById("uploadBox").value === "") {
+                Swal.fire(
+                    'Error',
+                    'Please Select an Image',
+                    'error'
+                );
+                return false;
+            }
+            return true;
+        }
+    </script>
+}

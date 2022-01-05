@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<Compile Remove="HotelContext.cs" />
+	<Compile Remove="Models\HotelImage.cs" />
+	<Compile Remove="Models\Location.cs" />
+	<Compile Remove="Models\RoomImage.cs" />
+	<Compile Remove="ViewModels\HotelViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.19" />
+	<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.19" />
+	<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.19" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.19" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.19">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+</Project>
