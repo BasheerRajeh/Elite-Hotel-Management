@@ -81,8 +81,16 @@
                                     @if (Model.Id != 0)
                                     {
                                         //Edit button and back to list
-                                        <partial name="_EditAndBackToListButton" model="Model.Id" />
-                                    }
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Id">Update</button>
+                                            </div>
+
+                                            <div class="col">
+                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
+                                            </div>
+                                        </div> }
                                     else
                                     {
                                         <div class="row">
@@ -105,7 +113,7 @@
                     @if (Model.Id != 0)
                     {
                         <div class="col-sm-12 col-md-5 ">
-                            <img src="@Model.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" alt="Category image" />
+                            <img src="@Model.ImageUrl" id="image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" alt="Category image" />
                         </div>
                     }
                 </div>
@@ -115,6 +123,7 @@
 </section>
 
 @section Scripts{
+
     <script>
         function validateInput() {
             if (document.getElementById("uploadBox").value === "") {
@@ -127,5 +136,40 @@
             }
             return true;
         }
+    </script>
+
+    <script>
+
+        var fileToRead = document.getElementById("uploadBox");
+
+        fileToRead.addEventListener("change", function (event) {
+            var input = this;
+            var url = $(this).val();
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+                $(this).val('');
+
+                $('#image').attr('src', '\\images\\categories\\no_preview.png');
+
+                Swal.fire(
+                    'Error',
+                    'Pleaae Input a valid image',
+                    'error'
+                );
+
+            }
+
+        });
+
+
+
     </script>
 }

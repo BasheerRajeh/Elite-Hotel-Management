@@ -96,7 +96,7 @@
                     @if (Model.Id != 0)
                     {
                         <div class="col-sm-12 col-md-5">
-                            <img src="@Model.ImageUrl" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" alt="Hotel image" />
+                            <img src="@Model.ImageUrl" id="image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" alt="Hotel image" />
                         </div>
                     }
                 </div>
@@ -119,4 +119,37 @@
             return true;
         }
     </script>
+
+    <script>
+
+        var fileToRead = document.getElementById("uploadBox");
+
+        fileToRead.addEventListener("change", function (event) {
+            var input = this;
+            var url = $(this).val();
+            var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+            if (input.files && input.files[0] && (ext == "gif" || ext == "png" || ext == "jpeg" || ext == "jpg")) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#image').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            else {
+                $(this).val('');
+
+                $('#image').attr('src', '\\images\\categories\\no_preview.png');
+
+                Swal.fire(
+                    'Error',
+                    'Pleaae Input a valid image',
+                    'error'
+                );
+
+            }
+
+        });
+    </script>
+
 }
