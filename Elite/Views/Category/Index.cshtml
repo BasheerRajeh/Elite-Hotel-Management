@@ -4,6 +4,22 @@
     ViewData["Title"] = "Category";
 }
 
+@section Styls{
+
+    <link rel="stylesheet" href="~/assets/vendors/jquery-datatables/jquery.dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/fontawesome/all.min.css">
+    <style>
+        table.dataTable td {
+            padding: 15px 8px;
+        }
+
+        .fontawesome-icons .the-icon svg {
+            font-size: 24px;
+        }
+    </style>
+
+}
+
 <section class="section">
     <div class="card">
         <div class="card-header">
@@ -13,6 +29,7 @@
             <table class="table" id="tblData">
                 <thead>
                     <tr>
+
                         <th>
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
@@ -32,6 +49,10 @@
 
 @section scripts{
 
+    <script src="~/assets/vendors/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendors/jquery-datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js"></script>
+
     <script src="~/js/category.js"></script>
-    <script src="~/assets/vendors/fontawesome/all.min.js"></script>
+
 }

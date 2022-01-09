@@ -144,6 +144,12 @@ namespace Elite.Controllers
             return Json(new { success = true, message = "Deleted successfully." });
         }
 
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            return Json(new { data = _unitOfWork.Category.Get(id) });
+        }
+
         #endregion API CALLS
     }
 }
