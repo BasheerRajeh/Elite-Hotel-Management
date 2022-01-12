@@ -47,6 +47,65 @@
     </div>
 </section>
 
+<div id=popup>
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <img src="~/images/categories/no_preview.png" class="card-img-top img-fluid" id="image_popup"
+                 alt="singleminded">
+
+            <div class="modal-content">
+                <div class="card">
+                    <div class="card-content">
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="form-group row align-items-center">
+                                            <div class="col-lg-4 col-3">
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </div>
+                                            <div class="col-lg-8 col-9">
+                                                <input value="undefiend" class="form-control" id="name_popup" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row align-items-center">
+                                            <div class="col-lg-4 col-3">
+                                                @Html.DisplayNameFor(model => model.MaxCap)
+                                            </div>
+                                            <div class="col-lg-8 col-9">
+                                                <input value="0" class="form-control" id="maxcap_popup" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row align-items-center">
+                                            <div class="col-lg-4 col-3">
+                                                @Html.DisplayNameFor(model => model.PricePerNight)
+                                            </div>
+                                            <div class="col-lg-8 col-9">
+                                                <input value="0" class="form-control" id="price_popup" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts{
 
     <script src="~/assets/vendors/jquery/jquery.min.js"></script>
