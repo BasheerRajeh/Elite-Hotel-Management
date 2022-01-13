@@ -223,8 +223,6 @@ namespace Elite.AppDbContext
             {
                 entity.HasIndex(e => e.CategoryId);
 
-                entity.HasIndex(e => e.ServiceId);
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(128);
@@ -234,12 +232,6 @@ namespace Elite.AppDbContext
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ServiceCat_Category");
-
-                entity.HasOne(d => d.Service)
-                    .WithMany(p => p.ServiceCat)
-                    .HasForeignKey(d => d.ServiceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ServiceCat_Service");
             });
 
             modelBuilder.Entity<SpecialService>(entity =>

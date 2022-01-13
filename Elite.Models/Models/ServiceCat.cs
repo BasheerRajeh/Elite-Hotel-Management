@@ -12,6 +12,8 @@ namespace Elite.AppDbContext
         public ServiceCat()
         {
             SpecialService = new HashSet<SpecialService>();
+
+            Service = new HashSet<Service>();
         }
 
         [Key]
@@ -22,17 +24,15 @@ namespace Elite.AppDbContext
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Service")]
-        public int ServiceId { get; set; }
-
-        [Required]
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
         public bool? SoftDel { get; set; }
 
         public virtual Category Category { get; set; }
-        public virtual Service Service { get; set; }
+
+        public virtual ICollection<Service> Service { get; set; }
+
         public virtual ICollection<SpecialService> SpecialService { get; set; }
     }
 }

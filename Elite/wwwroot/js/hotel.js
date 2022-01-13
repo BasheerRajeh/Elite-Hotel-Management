@@ -65,10 +65,22 @@ function Delete(url) {
                 url: url,
                 success: function (data) {
                     if (data.success) {
-                        toastr.success(data.message);
+                        Toastify({
+                            text: "Deleted sucsessfully",
+                            duration: 3000,
+                            background: '#4BB543',
+                            close: true,
+                        }).showToast();
+
                         dataTable.ajax.reload();
                     } else {
-                        toastr.error(data.message);
+                        //toastr.error(data.message);
+                        Toastify({
+                            text: "faild delete",
+                            duration: 3000,
+                            background: "#B33A3A",
+                            close: true,
+                        }).showToast();
                     }
                 }
             });

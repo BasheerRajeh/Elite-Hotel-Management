@@ -11,7 +11,7 @@ namespace Elite.AppDbContext
     {
         public Service()
         {
-            ServiceCat = new HashSet<ServiceCat>();
+            //ServiceCat = new HashSet<ServiceCat>();
         }
 
         [Key]
@@ -28,8 +28,10 @@ namespace Elite.AppDbContext
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
 
+        public int ServiceCatId { get; set; }
+
         public bool? SoftDel { get; set; }
 
-        public virtual ICollection<ServiceCat> ServiceCat { get; set; }
+        public virtual ServiceCat ServiceCat { get; set; }
     }
 }

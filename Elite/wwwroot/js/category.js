@@ -68,7 +68,8 @@ function Delete(url) {
                         Toastify({
                             text: "Deleted sucsessfully",
                             duration: 3000,
-                            background: '#4BB543'
+                            background: '#4BB543',
+                            close: true,
                         }).showToast();
 
                         dataTable.ajax.reload();
@@ -78,6 +79,7 @@ function Delete(url) {
                             text: "faild delete",
                             duration: 3000,
                             background: "#B33A3A",
+                            close: true,
                         }).showToast();
                     }
                 },
