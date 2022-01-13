@@ -21,11 +21,19 @@ function loadDataTable() {
                 "render": function (data) {
                     return `
                             <div class="text-center">
-                                <a href="/hotel/Upsert/${data}" class='btn btn-warning text-dark' style='cursor: pointer; width: 100px;'>
+                                <a href="/hotel/Upsert/${data}" class='btn btn-sm btn-warning text-dark' style='cursor: pointer; width: 80px;'>
                                     <i class="far fa-edit"></i> Edit
                                 </a>
+
                                 &nbsp;
-                                <a onclick=Delete("/hotel/Delete/${data}") class='btn btn-danger text-white' style='cursor: pointer; width: 100px;'>
+
+                                <a id="btnInfo" onclick=Info("/hotel/Details/${data}") data-bs-toggle="modal"
+                                            data-bs-target="#exampleModalScrollable" class='btn btn-sm btn-info text-dark' style='cursor: pointer; width: 80px;'>
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+
+                                &nbsp;
+                                <a onclick=Delete("/hotel/Delete/${data}") class='btn btn-sm btn-danger text-white' style='cursor: pointer; width: 80px;'>
                                     <i class="far fa-trash-alt"></i> Delete
                                 </a>
                             </div>
@@ -66,4 +74,20 @@ function Delete(url) {
             });
         }
     })
+}
+
+function Info(url) {
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "json",
+        cache: false,
+        success: function (data) {
+            $("#image_popup").attr("src", data.data.imageUrl);
+
+            $('#name_popup').val(data.data.name);
+
+            $('#city_popup').val(data.data.city);
+        }
+    });
 }

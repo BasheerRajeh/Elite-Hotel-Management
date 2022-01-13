@@ -29,7 +29,7 @@ function loadDataTable() {
 
                                 <a id="btnInfo" onclick=Info("/Category/Details/${data}") data-bs-toggle="modal"
                                             data-bs-target="#exampleModalScrollable" class='btn btn-sm btn-info text-dark' style='cursor: pointer; width: 80px;'>
-                                    <i class="far fa-info-circle" text-dark></i> Details
+                                    <i class="fas fa-info-circle"></i> Details
                                 </a>
 
                                 &nbsp;

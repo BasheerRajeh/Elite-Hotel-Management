@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\BaseController.cs" />
     <Compile Remove="Controllers\LocationController.cs" />
   </ItemGroup>
 

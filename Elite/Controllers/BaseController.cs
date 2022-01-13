@@ -1,22 +1,20 @@
-﻿using Elite.AppDbContext;
-using Elite.DataAccess.Core;
+﻿using Elite.DataAccess.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Elite.Controllers
 {
-    public class HotelController : Controller
+    public class BaseController<T> : Controller where T : class
     {
         private readonly IUnitOfWork _unitOfWork;
 
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public HotelController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+        public BaseController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             this._unitOfWork = unitOfWork;
 
@@ -30,26 +28,26 @@ namespace Elite.Controllers
 
         public IActionResult Upsert(int? id)
         {
-            Hotel hotel = new Hotel();
+            var entity = new T();
 
             if (id == null)
             {
-                return View(hotel);
+                return View(entity);
             }
 
-            hotel = _unitOfWork.Hotel.Get(id);
+            entity = _unitOfWork.T.Get(id);
 
-            if (hotel == null)
+            if (entity == null)
             {
                 return NotFound();
             }
 
-            return View(hotel);
+            return View(entity);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Hotel hotel)
+        public IActionResult Upsert(Category category)
         {
             if (ModelState.IsValid)
             {
@@ -57,12 +55,12 @@ namespace Elite.Controllers
 
                 var files = HttpContext.Request.Form.Files;
 
-                if (hotel.Id == 0)
+                if (category.Id == 0)
                 {
                     //New Hotel
                     string fileName = Guid.NewGuid().ToString();
 
-                    var uploads = Path.Combine(webRootPath, @"images\hotels");
+                    var uploads = Path.Combine(webRootPath, @"images\categories");
 
                     var extension = Path.GetExtension(files[0].FileName);
 
@@ -71,24 +69,24 @@ namespace Elite.Controllers
                         files[0].CopyTo(fileStreams);
                     }
 
-                    hotel.ImageUrl = @"\images\hotels\" + fileName + extension;
+                    category.ImageUrl = @"\images\categories\" + fileName + extension;
 
-                    _unitOfWork.Hotel.Add(hotel);
+                    _unitOfWork.Category.Add(category);
                 }
                 else
                 {
                     //Edit Hotel
-                    var hotelFromDb = _unitOfWork.Hotel.Get(hotel.Id);
+                    var categoryFromDb = _unitOfWork.Category.Get(category.Id);
 
                     if (files.Count > 0)
                     {
                         string fileName = Guid.NewGuid().ToString();
 
-                        var uploads = Path.Combine(webRootPath, @"images\hotels");
+                        var uploads = Path.Combine(webRootPath, @"images\categories");
 
                         var extension_new = Path.GetExtension(files[0].FileName);
 
-                        var imagePath = Path.Combine(webRootPath, hotelFromDb.ImageUrl.TrimStart('\\'));
+                        var imagePath = Path.Combine(webRootPath, categoryFromDb.ImageUrl.TrimStart('\\'));
 
                         if (System.IO.File.Exists(imagePath))
                         {
@@ -100,14 +98,14 @@ namespace Elite.Controllers
                             files[0].CopyTo(fileStreams);
                         }
 
-                        hotel.ImageUrl = @"\images\hotels\" + fileName + extension_new;
+                        category.ImageUrl = @"\images\categories\" + fileName + extension_new;
                     }
                     else
                     {
-                        hotel.ImageUrl = hotelFromDb.ImageUrl;
+                        category.ImageUrl = categoryFromDb.ImageUrl;
                     }
 
-                    _unitOfWork.Hotel.Update(hotel);
+                    _unitOfWork.Category.Update(category);
                 }
                 _unitOfWork.Save();
 
@@ -115,7 +113,7 @@ namespace Elite.Controllers
             }
             else
             {
-                return View(hotel);
+                return View(category);
             }
         }
 
@@ -124,20 +122,20 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Hotel.GetAll() });
+            return Json(new { data = _unitOfWork.Category.GetAll() });
         }
 
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var objFromDb = _unitOfWork.Hotel.Get(id);
+            var objFromDb = _unitOfWork.Category.Get(id);
 
             if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting." });
             }
 
-            _unitOfWork.Hotel.Remove(objFromDb);
+            _unitOfWork.Category.Remove(objFromDb);
 
             _unitOfWork.Save();
 
@@ -147,7 +145,7 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return Json(new { data = _unitOfWork.Hotel.Get(id) });
+            return Json(new { data = _unitOfWork.Category.Get(id) });
         }
 
         #endregion API CALLS
