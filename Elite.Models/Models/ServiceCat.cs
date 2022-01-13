@@ -27,6 +27,10 @@ namespace Elite.AppDbContext
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
+        [DataType(DataType.ImageUrl)]
+        [Display(Name = "Image")]
+        public string ImageUrl { get; set; }
+
         public bool? SoftDel { get; set; }
 
         public virtual Category Category { get; set; }
