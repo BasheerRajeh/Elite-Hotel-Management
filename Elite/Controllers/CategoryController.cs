@@ -10,25 +10,16 @@ using System.Threading.Tasks;
 
 namespace Elite.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController<Category>
     {
-        private readonly IUnitOfWork _unitOfWork;
-
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public CategoryController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+        public CategoryController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment) : base(unitOfWork)
         {
-            this._unitOfWork = unitOfWork;
-
             this._hostEnvironment = hostEnvironment;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Upsert(int? id)
+        public override IActionResult Upsert(int? id)
         {
             Category category = new Category();
 
@@ -49,7 +40,7 @@ namespace Elite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Category category)
+        public override IActionResult Upsert(Category category)
         {
             if (ModelState.IsValid)
             {
@@ -122,13 +113,13 @@ namespace Elite.Controllers
         #region API CALLS
 
         [HttpGet]
-        public IActionResult GetAll()
+        public override IActionResult GetAll()
         {
             return Json(new { data = _unitOfWork.Category.GetAll() });
         }
 
         [HttpDelete]
-        public IActionResult Delete(int id)
+        public override IActionResult Delete(int id)
         {
             var objFromDb = _unitOfWork.Category.Get(id);
 
@@ -145,7 +136,7 @@ namespace Elite.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public override IActionResult Details(int id)
         {
             return Json(new { data = _unitOfWork.Category.Get(id) });
         }

@@ -10,25 +10,16 @@ using System.Threading.Tasks;
 
 namespace Elite.Controllers
 {
-    public class HotelController : Controller
+    public class HotelController : BaseController<Hotel>
     {
-        private readonly IUnitOfWork _unitOfWork;
-
         private readonly IWebHostEnvironment _hostEnvironment;
 
-        public HotelController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+        public HotelController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment) : base(unitOfWork)
         {
-            this._unitOfWork = unitOfWork;
-
             this._hostEnvironment = hostEnvironment;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Upsert(int? id)
+        public override IActionResult Upsert(int? id)
         {
             Hotel hotel = new Hotel();
 
@@ -49,7 +40,7 @@ namespace Elite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Hotel hotel)
+        public override IActionResult Upsert(Hotel hotel)
         {
             if (ModelState.IsValid)
             {
@@ -122,13 +113,13 @@ namespace Elite.Controllers
         #region API CALLS
 
         [HttpGet]
-        public IActionResult GetAll()
+        public override IActionResult GetAll()
         {
             return Json(new { data = _unitOfWork.Hotel.GetAll() });
         }
 
         [HttpDelete]
-        public IActionResult Delete(int id)
+        public override IActionResult Delete(int id)
         {
             var objFromDb = _unitOfWork.Hotel.Get(id);
 
@@ -145,7 +136,7 @@ namespace Elite.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public override IActionResult Details(int id)
         {
             return Json(new { data = _unitOfWork.Hotel.Get(id) });
         }
