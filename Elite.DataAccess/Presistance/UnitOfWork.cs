@@ -38,20 +38,35 @@ namespace Elite.DataAccess.Presistance
             Service = new ServiceRepository(_db);
 
             SpecialService = new SpecialServiceRepository(_db);
+
+            ServiceCat = new ServiceCatRepository(_db);
         }
 
         public ICategoryRepository Category { get; private set; }
+
         public IFeatureRepository Feature { get; private set; }
+
         public IFoodCatRepository FoodCat { get; private set; }
+
         public IFoodItemRepository FoodItem { get; private set; }
+
         public IHotelRepository Hotel { get; private set; }
+
         public IOrderRepository Order { get; private set; }
+
         public IPackageRepository Package { get; private set; }
+
         public IReservationRepository Reservation { get; private set; }
+
         public IRoomRepository Room { get; private set; }
+
         public IRoomStatusRepository RoomStatus { get; private set; }
+
         public IServiceRepository Service { get; private set; }
+
         public ISpecialServiceRepository SpecialService { get; private set; }
+
+        public IServiceCatRepository ServiceCat { get; private set; }
 
         public void Dispose()
         {

@@ -28,6 +28,8 @@ namespace Elite.AppDbContext
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
 
+        [Required]
+        [Display(Name = "Service Category")]
         public int ServiceCatId { get; set; }
 
         public bool? SoftDel { get; set; }

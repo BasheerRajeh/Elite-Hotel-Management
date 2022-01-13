@@ -22,7 +22,7 @@ function loadDataTable() {
                             <div  class="col-12 text-center">
 
                                 <a href="/Category/Upsert/${data}" class='btn btn-sm btn-warning text-dark' style='cursor: pointer; width: 80px;'>
-                                    <i class="far fa-edit"></i> Edit
+                                    <i class="fas fa-edit"></i> Edit
                                 </a>
 
                                 &nbsp;
@@ -33,8 +33,8 @@ function loadDataTable() {
                                 </a>
 
                                 &nbsp;
-                                <a id="details" onclick=Delete("/Category/Delete/${data}+"fds"") class='btn btn-sm btn-danger text-white' style='cursor: pointer; width: 80px;'>
-                                    <i class="far fa-trash-alt"></i> Delete
+                                <a id="details" onclick=Delete("/Category/Delete/${data}") class='btn btn-sm btn-danger text-white' style='cursor: pointer; width: 80px;'>
+                                    <i class="fas fa-trash-alt"></i> Delete
                                 </a>
                             </div>
 
