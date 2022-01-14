@@ -182,12 +182,12 @@ namespace Elite.AppDbContext
                     .IsRequired()
                     .HasMaxLength(128);
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Room)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Room_Category");
-
+                /*                entity.HasOne(d => d.Category)
+                                    .WithMany(p => p.Room)
+                                    .HasForeignKey(d => d.CategoryId)
+                                    .OnDelete(DeleteBehavior.ClientSetNull)
+                                    .HasConstraintName("FK_Room_Category");
+                */
                 entity.HasOne(d => d.Hotel)
                     .WithMany(p => p.Room)
                     .HasForeignKey(d => d.HotelId)
@@ -227,11 +227,12 @@ namespace Elite.AppDbContext
                     .IsRequired()
                     .HasMaxLength(128);
 
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.ServiceCat)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ServiceCat_Category");
+                /*                entity.HasOne(d => d.Category)
+                                    .WithMany(p => p.ServiceCat)
+                                    .HasForeignKey(d => d.CategoryId)
+                                    .OnDelete(DeleteBehavior.ClientSetNull)
+                                    .HasConstraintName("FK_ServiceCat_Category");
+                */
             });
 
             modelBuilder.Entity<SpecialService>(entity =>
@@ -246,11 +247,12 @@ namespace Elite.AppDbContext
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_SpecialService_Reservation");
 
-                entity.HasOne(d => d.ServiceCat)
-                    .WithMany(p => p.SpecialService)
-                    .HasForeignKey(d => d.ServiceCatId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_SpecialService_ServiceCat");
+                /*                entity.HasOne(d => d.ServiceCat)
+                                    .WithMany(p => p.SpecialService)
+                                    .HasForeignKey(d => d.ServiceCatId)
+                                    .OnDelete(DeleteBehavior.ClientSetNull)
+                                    .HasConstraintName("FK_SpecialService_ServiceCat");
+                */
             });
 
             base.OnModelCreating(modelBuilder);

@@ -37,6 +37,7 @@ namespace Elite.AppDbContext
         public bool? SoftDel { get; set; }
 
         public virtual ICollection<Room> Room { get; set; }
+
         public virtual ICollection<ServiceCat> ServiceCat { get; set; }
     }
 }

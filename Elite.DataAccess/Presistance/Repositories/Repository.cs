@@ -14,7 +14,7 @@ namespace Elite.DataAccess.Presistance.Repositories
     {
         protected readonly DbContext Context;
 
-        internal DbSet<T> dbSet;
+        protected DbSet<T> dbSet;
 
         public Repository(DbContext context)
         {
@@ -22,17 +22,17 @@ namespace Elite.DataAccess.Presistance.Repositories
             this.dbSet = context.Set<T>();
         }
 
-        public void Add(T entity)
+        public virtual void Add(T entity)
         {
             dbSet.Add(entity);
         }
 
-        public T Get(object id)
+        public virtual T Get(object id)
         {
             return dbSet.Find(id);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
+        public virtual IEnumerable<T> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = null)
         {
             IQueryable<T> query = dbSet;
 
@@ -57,7 +57,7 @@ namespace Elite.DataAccess.Presistance.Repositories
             return query.ToList();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
+        public virtual T GetFirstOrDefault(Expression<Func<T, bool>> filter = null, string includeProperties = null)
         {
             IQueryable<T> query = dbSet;
 
@@ -77,14 +77,14 @@ namespace Elite.DataAccess.Presistance.Repositories
             return query.FirstOrDefault();
         }
 
-        public void Remove(object id)
+        public virtual void Remove(object id)
         {
             T entityToRemove = dbSet.Find(id);
 
             Remove(entityToRemove);
         }
 
-        public void Remove(T entity)
+        public virtual void Remove(T entity)
         {
             dbSet.Remove(entity);
         }

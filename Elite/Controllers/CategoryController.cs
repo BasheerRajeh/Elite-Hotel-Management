@@ -50,7 +50,7 @@ namespace Elite.Controllers
 
                 if (category.Id == 0)
                 {
-                    //New Hotel
+                    //New category
                     string fileName = Guid.NewGuid().ToString();
 
                     var uploads = Path.Combine(webRootPath, @"images\categories");
@@ -68,7 +68,7 @@ namespace Elite.Controllers
                 }
                 else
                 {
-                    //Edit Hotel
+                    //Edit category
                     var categoryFromDb = _unitOfWork.Category.Get(category.Id);
 
                     if (files.Count > 0)

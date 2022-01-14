@@ -4,14 +4,16 @@ using Elite.AppDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Elite.AppDbContext.Migrations
 {
     [DbContext(typeof(HotelContext))]
-    partial class HotelContextModelSnapshot : ModelSnapshot
+    [Migration("20220114020222_remove Icolliction service cat from category")]
+    partial class removeIcollictionservicecatfromcategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -672,7 +674,7 @@ namespace Elite.AppDbContext.Migrations
                     b.HasOne("Elite.AppDbContext.Category", "Category")
                         .WithMany("Room")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("FK_Room_Category")
                         .IsRequired();
 
                     b.HasOne("Elite.AppDbContext.Hotel", "Hotel")
@@ -700,7 +702,7 @@ namespace Elite.AppDbContext.Migrations
             modelBuilder.Entity("Elite.AppDbContext.ServiceCat", b =>
                 {
                     b.HasOne("Elite.AppDbContext.Category", "Category")
-                        .WithMany("ServiceCat")
+                        .WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -717,7 +719,7 @@ namespace Elite.AppDbContext.Migrations
                     b.HasOne("Elite.AppDbContext.ServiceCat", "ServiceCat")
                         .WithMany("SpecialService")
                         .HasForeignKey("ServiceCatId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("FK_SpecialService_ServiceCat")
                         .IsRequired();
                 });
 

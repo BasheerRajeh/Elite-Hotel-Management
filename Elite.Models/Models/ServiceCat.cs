@@ -20,7 +20,7 @@ namespace Elite.AppDbContext
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Category Name")]
+        [Display(Name = "Service Category")]
         public string Name { get; set; }
 
         [Required]

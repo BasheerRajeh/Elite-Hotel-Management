@@ -1,12 +1,12 @@
-﻿@model Elite.AppDbContext.Category
+﻿@model Elite.AppDbContext.ViewModels.ServiceCatVM
 
 @{
 
-    ViewData["Title"] = "Category";
+    ViewData["Title"] = "Service Category";
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var title = "Create Category";
+    var title = "Create Service Category";
 }
 
 <section class="section">
@@ -14,10 +14,10 @@
         <form method="post" asp-action="Upsert" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @if (Model.Id != 0)
+            @if (Model.ServiceCat.Id != 0)
             {
-                <input type="hidden" asp-for="Id" />
-                title = "Edit Category";
+                <input type="hidden" asp-for="ServiceCat.Id" />
+                title = "Edit Service Category";
             }
 
             <div class="card-header">
@@ -31,45 +31,32 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="Name"></label>
+                                    <label class="col-form-label" asp-for="ServiceCat.Name"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <input asp-for="Name" class="form-control">
-                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                    <input asp-for="ServiceCat.Name" class="form-control">
+                                    <span asp-validation-for="ServiceCat.Name" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="MaxCap"></label>
+                                    <label class="col-form-label" asp-for="ServiceCat.CategoryId"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <input asp-for="MaxCap" class="form-control">
-                                    <span asp-validation-for="MaxCap" class="text-danger"></span>
+                                    <select name="ServiceCat" class="form-control" asp-items="Model.CategoryList">
+                                        <option style="text-align-last:center" value="">-- Please select a Category --</option>
+                                    </select>
+                                    <span asp-validation-for="ServiceCat.CategoryId" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="PricePerNight"></label>
+                                    <label class="col-form-label" asp-for="ServiceCat.ImageUrl"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <div class="input-group">
-
-                                        <input asp-for="PricePerNight" class="form-control"
-                                               aria-label="Dollar amount (with dot and two decimal places)">
-                                        <span class="input-group-text">ل.س</span>
-                                        <span asp-validation-for="PricePerNight" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group row align-items-center">
-                                <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="ImageUrl"></label>
-                                </div>
-                                <div class="col-lg-8 col-9">
-                                    <input type="file" name="files" id="uploadBox" asp-for="ImageUrl" multiple class="form-control">
+                                    <input type="file" name="files" id="uploadBox" asp-for="ServiceCat.ImageUrl" multiple class="form-control">
                                 </div>
                             </div>
 
@@ -78,7 +65,7 @@
                                 </div>
 
                                 <div class="col-lg-8 col-9">
-                                    @if (Model.Id != 0)
+                                    @if (Model.ServiceCat.Id != 0)
                                     {
                                         //Edit button and back to list
 
@@ -110,12 +97,12 @@
                     <div class="gallery col-8 col-sm-12 col-lg-4 mt-2 mt-md-0 mb-md-0 mb-2" data-bs-toggle="modal" data-bs-target="#galleryModal">
                         <a href="#">
 
-                            @if (Model.Id != 0)
+                            @if (Model.ServiceCat.Id != 0)
                             {
 
                                 <img class="w-100 active"
                                      id="image"
-                                     src="@Model.ImageUrl"
+                                     src="@Model.ServiceCat.ImageUrl"
                                      data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
 
                             }
@@ -123,7 +110,7 @@
                             {
                                 <img class="w-100 active"
                                      id="image"
-                                     src="/images/categories/no_preview.png"
+                                     src="/images/serviceCat/no_preview.png"
                                      data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
 
                             }
@@ -146,7 +133,7 @@
                         <div class="carousel-item active">
                             <img class="d-block w-100"
                                  id="image1"
-                                 src="@Model.ImageUrl" />
+                                 src="@Model.ServiceCat.ImageUrl" />
                         </div>
                     </div>
                 </div>
@@ -195,8 +182,8 @@
             else {
                 $(this).val('');
 
-                $('#image').attr('src', '\\images\\categories\\no_preview.png');
-                $('#image1').attr('src', '\\images\\categories\\no_preview.png');
+                $('#image').attr('src', '\\images\\serviceCat\\no_preview.png');
+                $('#image1').attr('src', '\\images\\serviceCat\\no_preview.png');
 
                 Swal.fire(
                     'Error',

@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Elite.AppDbContext.Category>
+﻿@model IEnumerable<Elite.AppDbContext.ServiceCat>
 
 @{
-    ViewData["Title"] = "Category";
+    ViewData["Title"] = "Service Category";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
@@ -36,11 +36,11 @@
                             @Html.DisplayNameFor(model => model.Name)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.MaxCap)
+                            @Html.DisplayNameFor(model => model.CategoryId)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PricePerNight)
-                        </th>
+                        @* <th>
+                                @Html.DisplayNameFor(model => model.PricePerNight)
+                            </th> *@
                         <th></th>
                     </tr>
                 </thead>
@@ -76,21 +76,21 @@
 
                                         <div class="form-group row align-items-center">
                                             <div class="col-lg-4 col-3">
-                                                @Html.DisplayNameFor(model => model.MaxCap)
+                                                @Html.DisplayNameFor(model => model.CategoryId)
                                             </div>
                                             <div class="col-lg-8 col-9">
-                                                <input value="0" class="form-control" id="maxcap_popup" disabled>
+                                                <input value="" class="form-control" id="category_popup" disabled>
                                             </div>
                                         </div>
 
-                                        <div class="form-group row align-items-center">
-                                            <div class="col-lg-4 col-3">
-                                                @Html.DisplayNameFor(model => model.PricePerNight)
-                                            </div>
-                                            <div class="col-lg-8 col-9">
-                                                <input value="0" class="form-control" id="price_popup" disabled>
-                                            </div>
-                                        </div>
+                                        @* <div class="form-group row align-items-center">
+                                                <div class="col-lg-4 col-3">
+                                                    @Html.DisplayNameFor(model => model.PricePerNight)
+                                                </div>
+                                                <div class="col-lg-8 col-9">
+                                                    <input value="0" class="form-control" id="price_popup" disabled>
+                                                </div>
+                                            </div> *@
                                     </div>
                                 </div>
                             </div>
@@ -114,6 +114,6 @@
     <script src="~/assets/vendors/jquery-datatables/jquery.dataTables.min.js"></script>
     <script src="~/assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js"></script>
 
-    <script src="~/js/category.js"></script>
+    <script src="~/js/service_cat.js"></script>
 
 }

@@ -1,12 +1,12 @@
-﻿@model Elite.AppDbContext.Category
+﻿@model Elite.AppDbContext.Hotel
 
 @{
 
-    ViewData["Title"] = "Category";
+    ViewData["Title"] = "Hotel";
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var title = "Create Category";
+    var title = "Create Hotel";
 }
 
 <section class="section">
@@ -17,7 +17,7 @@
             @if (Model.Id != 0)
             {
                 <input type="hidden" asp-for="Id" />
-                title = "Edit Category";
+                title = "Edit Hotel";
             }
 
             <div class="card-header">
@@ -41,26 +41,12 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="MaxCap"></label>
+                                    <label class="col-form-label" asp-for="City"></label>
+                                    <span asp-validation-for="City" class="text-danger"></span>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <input asp-for="MaxCap" class="form-control">
-                                    <span asp-validation-for="MaxCap" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                            <div class="form-group row align-items-center">
-                                <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="PricePerNight"></label>
-                                </div>
-                                <div class="col-lg-8 col-9">
-                                    <div class="input-group">
-
-                                        <input asp-for="PricePerNight" class="form-control"
-                                               aria-label="Dollar amount (with dot and two decimal places)">
-                                        <span class="input-group-text">ل.س</span>
-                                        <span asp-validation-for="PricePerNight" class="text-danger"></span>
-                                    </div>
+                                    <input asp-for="City" class="form-control">
+                                    <span asp-validation-for="City" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -69,7 +55,7 @@
                                     <label class="col-form-label" asp-for="ImageUrl"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <input type="file" name="files" id="uploadBox" asp-for="ImageUrl" multiple class="form-control">
+                                    <input type="file" name="files" id="uploadBox" asp-for="Name" multiple class="form-control">
                                 </div>
                             </div>
 
@@ -81,16 +67,8 @@
                                     @if (Model.Id != 0)
                                     {
                                         //Edit button and back to list
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Id">Update</button>
-                                            </div>
-
-                                            <div class="col">
-                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
-                                            </div>
-                                        </div> }
+                                        <partial name="_EditAndBackToListButton" model="Model.Id" />
+                                    }
                                     else
                                     {
                                         <div class="row">
@@ -107,60 +85,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="gallery col-8 col-sm-12 col-lg-4 mt-2 mt-md-0 mb-md-0 mb-2" data-bs-toggle="modal" data-bs-target="#galleryModal">
-                        <a href="#">
 
-                            @if (Model.Id != 0)
-                            {
-
-                                <img class="w-100 active"
-                                     id="image"
-                                     src="@Model.ImageUrl"
-                                     data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
-
-                            }
-                            else
-                            {
-                                <img class="w-100 active"
-                                     id="image"
-                                     src="/images/categories/no_preview.png"
-                                     data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
-
-                            }
-                        </a>
-                    </div>
+                    @if (Model.Id != 0)
+                    {
+                        <div class="col-sm-12 col-md-5">
+                            <img src="@Model.ImageUrl" id="image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" alt="Hotel image" />
+                        </div>
+                    }
                 </div>
             </div>
         </form>
     </div>
 </section>
 
-<div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalTitle"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-
-                <div id="Gallerycarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img class="d-block w-100"
-                                 id="image1"
-                                 src="@Model.ImageUrl" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 @section Scripts{
-
     <script>
         function validateInput() {
             if (document.getElementById("uploadBox").value === "") {
@@ -188,7 +126,6 @@
 
                 reader.onload = function (e) {
                     $('#image').attr('src', e.target.result);
-                    $('#image1').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
@@ -196,7 +133,6 @@
                 $(this).val('');
 
                 $('#image').attr('src', '\\images\\categories\\no_preview.png');
-                $('#image1').attr('src', '\\images\\categories\\no_preview.png');
 
                 Swal.fire(
                     'Error',
@@ -208,4 +144,5 @@
 
         });
     </script>
+
 }

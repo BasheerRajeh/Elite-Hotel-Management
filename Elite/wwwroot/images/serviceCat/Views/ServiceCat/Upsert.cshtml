@@ -1,12 +1,12 @@
-﻿@model Elite.AppDbContext.Category
+﻿@model Elite.AppDbContext.ServiceCatVM
 
 @{
 
-    ViewData["Title"] = "Category";
+    ViewData["Title"] = "Service Category";
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var title = "Create Category";
+    var title = "Create Service Category";
 }
 
 <section class="section">
@@ -17,7 +17,7 @@
             @if (Model.Id != 0)
             {
                 <input type="hidden" asp-for="Id" />
-                title = "Edit Category";
+                title = "Edit Service Category";
             }
 
             <div class="card-header">
@@ -69,7 +69,7 @@
                                     <label class="col-form-label" asp-for="ImageUrl"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <input type="file" name="files" id="uploadBox" asp-for="ImageUrl" multiple class="form-control">
+                                    <input type="file" name="files" id="uploadBox" asp-for="Name" multiple class="form-control">
                                 </div>
                             </div>
 

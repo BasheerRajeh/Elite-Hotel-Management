@@ -7,9 +7,13 @@
 
   <ItemGroup>
     <Compile Remove="Views\Location\**" />
+    <Compile Remove="wwwroot\images\serviceCat\Views\**" />
     <Content Remove="Views\Location\**" />
+    <Content Remove="wwwroot\images\serviceCat\Views\**" />
     <EmbeddedResource Remove="Views\Location\**" />
+    <EmbeddedResource Remove="wwwroot\images\serviceCat\Views\**" />
     <None Remove="Views\Location\**" />
+    <None Remove="wwwroot\images\serviceCat\Views\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +42,6 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Customer\Controllers\" />
-    <Folder Include="wwwroot\images\serviceCat\" />
   </ItemGroup>
 
   <ItemGroup>

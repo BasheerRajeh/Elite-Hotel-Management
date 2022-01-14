@@ -1,4 +1,5 @@
 ﻿using Elite.AppDbContext;
+using Elite.AppDbContext.ViewModels;
 using Elite.DataAccess.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -45,26 +46,40 @@ namespace Elite.Controllers
         [HttpGet]
         public override IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.ServiceCat.GetAll() });
+            return Json(new { data = _unitOfWork.ServiceCat.GetAll(includeProperties: "Category") });
         }
 
         public override IActionResult Upsert(int? id)
         {
-            ServiceCat serviceCat = new ServiceCat();
-
-            if (id == null)
+            ServiceCatVM serviceCatVM = new ServiceCatVM()
             {
-                return View(serviceCat);
+                ServiceCat = new ServiceCat(),
+                CategoryList = _unitOfWork.Category.GetCategoryForDropDown()
+            };
+
+            if (id != null)
+            {
+                serviceCatVM.ServiceCat = _unitOfWork.ServiceCat.Get(id.GetValueOrDefault());
             }
 
-            serviceCat = _unitOfWork.ServiceCat.Get(id);
+            return View(serviceCatVM);
 
-            if (serviceCat == null)
-            {
-                return NotFound();
-            }
+            /*            ServiceCat serviceCat = new ServiceCat();
 
-            return View(serviceCat);
+                        if (id == null)
+                        {
+                            return View(serviceCat);
+                        }
+
+                        serviceCat = _unitOfWork.ServiceCat.Get(id);
+
+                        if (serviceCat == null)
+                        {
+                            return NotFound();
+                        }
+
+                        return View(serviceCat);
+            */
         }
 
         [HttpPost]
@@ -79,7 +94,7 @@ namespace Elite.Controllers
 
                 if (serviceCat.Id == 0)
                 {
-                    //New Hotel
+                    //New service cat
                     string fileName = Guid.NewGuid().ToString();
 
                     var uploads = Path.Combine(webRootPath, @"images\serviceCat");
@@ -97,7 +112,7 @@ namespace Elite.Controllers
                 }
                 else
                 {
-                    //Edit Hotel
+                    //Edit service cat
                     var serviceCatFromDb = _unitOfWork.ServiceCat.Get(serviceCat.Id);
 
                     if (files.Count > 0)
