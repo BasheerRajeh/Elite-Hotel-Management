@@ -38,6 +38,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Customer\Controllers\" />
+    <Folder Include="wwwroot\images\serviceCat\" />
   </ItemGroup>
 
   <ItemGroup>
