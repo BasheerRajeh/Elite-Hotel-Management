@@ -42,7 +42,6 @@
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
                                     <label class="col-form-label" asp-for="City"></label>
-                                    <span asp-validation-for="City" class="text-danger"></span>
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input asp-for="City" class="form-control">
@@ -67,8 +66,16 @@
                                     @if (Model.Id != 0)
                                     {
                                         //Edit button and back to list
-                                        <partial name="_EditAndBackToListButton" model="Model.Id" />
-                                    }
+
+                                        <div class="row">
+                                            <div class="col">
+                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Id">Update</button>
+                                            </div>
+
+                                            <div class="col">
+                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
+                                            </div>
+                                        </div> }
                                     else
                                     {
                                         <div class="row">
@@ -85,18 +92,56 @@
                             </div>
                         </div>
                     </div>
+                    <div class="gallery col-8 col-sm-12 col-lg-4 mt-2 mt-md-0 mb-md-0 mb-2" data-bs-toggle="modal" data-bs-target="#galleryModal">
+                        <a href="#">
 
-                    @if (Model.Id != 0)
-                    {
-                        <div class="col-sm-12 col-md-5">
-                            <img src="@Model.ImageUrl" id="image" width="100%" style="border-radius:5px; border:1px solid #bbb9b9" alt="Hotel image" />
-                        </div>
-                    }
+                            @if (Model.Id != 0)
+                            {
+
+                                <img class="w-100 active"
+                                     id="image"
+                                     src="@Model.ImageUrl"
+                                     data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
+
+                            }
+                            else
+                            {
+                                <img class="w-100 active"
+                                     id="image"
+                                     src="/images/hotels/no_preview.png"
+                                     data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
+
+                            }
+                        </a>
+                    </div>
                 </div>
-            </div>
         </form>
     </div>
 </section>
+
+<div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+
+                <div id="Gallerycarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100"
+                                 id="image1"
+                                 src="@Model.ImageUrl" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Scripts{
     <script>

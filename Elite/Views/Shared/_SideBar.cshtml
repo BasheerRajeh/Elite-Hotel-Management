@@ -26,6 +26,22 @@
                 </a>
             </li>
 
+            <!--Hotel-->
+            <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                    <i class="bi bi-stack"></i>
+                    <span>Hotel</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a asp-controller="Hotel" asp-action="Index">Display All</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a asp-controller="Hotel" asp-action="Upsert">Add Hotel</a>
+                    </li>
+                </ul>
+            </li>
+
             <!--Category-->
             <li class="sidebar-item has-sub">
                 <a href="#" class="sidebar-link">
@@ -38,6 +54,22 @@
                     </li>
                     <li class="submenu-item">
                         <a asp-controller="Category" asp-action="Upsert">Add Category</a>
+                    </li>
+                </ul>
+            </li>
+
+            <!--Service Category-->
+            <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                    <i class="bi bi-stack"></i>
+                    <span>Service Category</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a asp-controller="ServiceCat" asp-action="Index">Display All</a>
+                    </li>
+                    <li class="submenu-item">
+                        <a asp-controller="ServiceCat" asp-action="Upsert">Add Service Category</a>
                     </li>
                 </ul>
             </li>
