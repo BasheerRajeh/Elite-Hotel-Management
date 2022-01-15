@@ -32,7 +32,7 @@ namespace Elite.DataAccess.Presistance.Repositories
             var objFromDb = _db.Service.FirstOrDefault(s => s.Id == service.Id);
             objFromDb.Name = service.Name;
             objFromDb.Price = service.Price;
-
+            objFromDb.ServiceCatId = service.ServiceCatId;
             _db.SaveChanges();
         }
     }

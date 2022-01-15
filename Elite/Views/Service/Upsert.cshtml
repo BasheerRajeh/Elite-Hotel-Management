@@ -1,12 +1,12 @@
-﻿@model Elite.AppDbContext.Hotel
+﻿@model Elite.AppDbContext.ViewModels.ServiceVM
 
 @{
 
-    ViewData["Title"] = "Hotel";
+    ViewData["Title"] = "Service";
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var title = "Create Hotel";
+    var title = "Create Service";
 }
 
 <section class="section">
@@ -14,10 +14,10 @@
         <form method="post" asp-action="Upsert" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            @if (Model.Id != 0)
+            @if (Model.Service.Id != 0)
             {
-                <input type="hidden" asp-for="Id" />
-                title = "Edit Hotel";
+                <input type="hidden" asp-for="Service.Id" />
+                title = "Edit Service";
             }
 
             <div class="card-header">
@@ -31,30 +31,50 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="Name"></label>
+                                    <label class="col-form-label" asp-for="Service.Name"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <input asp-for="Name" class="form-control">
-                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                    <input asp-for="Service.Name" class="form-control">
+                                    <span asp-validation-for="Service.Name" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="City"></label>
+                                    <label class="col-form-label" asp-for="Service.ServiceCatId"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <input asp-for="City" class="form-control">
-                                    <span asp-validation-for="City" class="text-danger"></span>
+                                    @Html.DropDownListFor(m => m.Service.ServiceCatId, Model.ServiceCatList,
+                                              "-- Please select a Service Category --", new { @class = "form-control" })
+
+                                    @*                                    <select name="Service" class="form-control" asp-items="Model.ServiceCatList">
+                                            <option style="text-align-last:center" value="">-- Please select a Service Category --</option>
+                                        </select>
+                                    *@                                    <span asp-validation-for="Service.ServiceCatId" class="text-danger"></span>
                                 </div>
                             </div>
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="ImageUrl"></label>
+                                    <label class="col-form-label" asp-for="Service.Price"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <input type="file" name="files" id="uploadBox" asp-for="Name" multiple class="form-control">
+                                    <div class="input-group">
+
+                                        <input asp-for="Service.Price" class="form-control"
+                                               aria-label="Dollar amount (with dot and two decimal places)">
+                                        <span class="input-group-text">ل.س</span>
+                                        <span asp-validation-for="Service.Price" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row align-items-center">
+                                <div class="col-lg-4 col-3">
+                                    <label class="col-form-label" asp-for="Service.ImageUrl"></label>
+                                </div>
+                                <div class="col-lg-8 col-9">
+                                    <input type="file" name="files" id="uploadBox" asp-for="Service.ImageUrl" multiple class="form-control">
                                 </div>
                             </div>
 
@@ -63,19 +83,20 @@
                                 </div>
 
                                 <div class="col-lg-8 col-9">
-                                    @if (Model.Id != 0)
+                                    @if (Model.Service.Id != 0)
                                     {
                                         //Edit button and back to list
 
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Id">Update</button>
+                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Service.Id">Update</button>
                                             </div>
 
                                             <div class="col">
                                                 <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
                                             </div>
-                                        </div> }
+                                        </div>
+                                    }
                                     else
                                     {
                                         <div class="row">
@@ -95,12 +116,12 @@
                     <div class="gallery col-8 col-sm-12 col-lg-4 mt-2 mt-md-0 mb-md-0 mb-2" data-bs-toggle="modal" data-bs-target="#galleryModal">
                         <a href="#">
 
-                            @if (Model.Id != 0)
+                            @if (Model.Service.Id != 0)
                             {
 
                                 <img class="w-100 active"
                                      id="image"
-                                     src="@Model.ImageUrl"
+                                     src="@Model.Service.ImageUrl"
                                      data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
 
                             }
@@ -108,13 +129,14 @@
                             {
                                 <img class="w-100 active"
                                      id="image"
-                                     src="/images/hotels/no_preview.png"
+                                     src="/images/service/no_preview.png"
                                      data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
 
                             }
                         </a>
                     </div>
                 </div>
+            </div>
         </form>
     </div>
 </section>
@@ -130,7 +152,7 @@
                         <div class="carousel-item active">
                             <img class="d-block w-100"
                                  id="image1"
-                                 src="@Model.ImageUrl" />
+                                 src="@Model.Service.ImageUrl" />
                         </div>
                     </div>
                 </div>
@@ -144,6 +166,7 @@
 </div>
 
 @section Scripts{
+
     <script>
         function validateInput() {
             if (document.getElementById("uploadBox").value === "") {
@@ -171,13 +194,15 @@
 
                 reader.onload = function (e) {
                     $('#image').attr('src', e.target.result);
+                    $('#image1').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(input.files[0]);
             }
             else {
                 $(this).val('');
 
-                $('#image').attr('src', '\\images\\hotels\\no_preview.png');
+                $('#image').attr('src', '\\images\\service\\no_preview.png');
+                $('#image1').attr('src', '\\images\\service\\no_preview.png');
 
                 Swal.fire(
                     'Error',
@@ -189,5 +214,4 @@
 
         });
     </script>
-
 }

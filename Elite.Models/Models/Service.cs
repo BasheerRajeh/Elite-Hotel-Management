@@ -9,10 +9,6 @@ namespace Elite.AppDbContext
 {
     public partial class Service
     {
-        public Service()
-        {
-            //ServiceCat = new HashSet<ServiceCat>();
-        }
 
         [Key]
         public int Id { get; set; }

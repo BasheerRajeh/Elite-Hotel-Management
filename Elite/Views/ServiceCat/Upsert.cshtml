@@ -44,10 +44,12 @@
                                     <label class="col-form-label" asp-for="ServiceCat.CategoryId"></label>
                                 </div>
                                 <div class="col-lg-8 col-9">
-                                    <select name="ServiceCat" class="form-control" asp-items="Model.CategoryList">
-                                        <option style="text-align-last:center" value="">-- Please select a Category --</option>
-                                    </select>
-                                    <span asp-validation-for="ServiceCat.CategoryId" class="text-danger"></span>
+                                    @Html.DropDownListFor(m => m.ServiceCat.CategoryId, Model.CategoryList,
+                                                                "-- Please select a Category --", new { @class = "form-control" })
+                                    @*                                    <select name="ServiceCat" class="form-control" asp-items="Model.CategoryList">
+                                            <option style="text-align-last:center" value="">-- Please select a Category --</option>
+                                        </select>
+                                    *@                                    <span asp-validation-for="ServiceCat.CategoryId" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -77,7 +79,8 @@
                                             <div class="col">
                                                 <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
                                             </div>
-                                        </div> }
+                                        </div>
+                                    }
                                     else
                                     {
                                         <div class="row">

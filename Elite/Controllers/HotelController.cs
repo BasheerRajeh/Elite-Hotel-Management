@@ -40,7 +40,7 @@ namespace Elite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public override IActionResult Upsert(Hotel hotel)
+        public IActionResult Upsert(Hotel hotel)
         {
             if (ModelState.IsValid)
             {

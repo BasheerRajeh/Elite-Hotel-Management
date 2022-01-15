@@ -40,7 +40,7 @@ namespace Elite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public override IActionResult Upsert(Category category)
+        public IActionResult Upsert(Category category)
         {
             if (ModelState.IsValid)
             {

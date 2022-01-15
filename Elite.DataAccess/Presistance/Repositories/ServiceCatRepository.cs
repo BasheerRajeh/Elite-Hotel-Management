@@ -38,6 +38,7 @@ namespace Elite.DataAccess.Presistance.Repositories
             objFromDb.Name = serviceCat.Name;
             objFromDb.CategoryId = serviceCat.CategoryId;
             objFromDb.ImageUrl = serviceCat.ImageUrl;
+
             _db.SaveChanges();
         }
     }

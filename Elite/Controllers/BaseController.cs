@@ -24,10 +24,6 @@ namespace Elite.Controllers
 
         public abstract IActionResult Upsert(int? id);
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public abstract IActionResult Upsert(T entity);
-
         #region API CALLS
 
         [HttpGet]

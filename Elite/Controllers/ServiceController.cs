@@ -1,24 +1,24 @@
 ﻿using Elite.AppDbContext;
-using Elite.AppDbContext.ViewModels;
 using Elite.DataAccess.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using Elite.AppDbContext.ViewModels;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Elite.Controllers
 {
-    public class ServiceCatController : BaseController<ServiceCat>
+    public class ServiceController : BaseController<Service>
     {
         private readonly IWebHostEnvironment _hostEnvironment;
 
         [BindProperty]
-        public ServiceCatVM serviceCatVM { get; set; }
+        public ServiceVM serviceVM { get; set; }
 
-        public ServiceCatController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment) : base(unitOfWork)
+        public ServiceController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment) : base(unitOfWork)
         {
             this._hostEnvironment = hostEnvironment;
         }
@@ -26,14 +26,14 @@ namespace Elite.Controllers
         [HttpDelete]
         public override IActionResult Delete(int id)
         {
-            var objFromDb = _unitOfWork.ServiceCat.Get(id);
+            var objFromDb = _unitOfWork.Service.Get(id);
 
             if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting." });
             }
 
-            _unitOfWork.ServiceCat.Remove(objFromDb);
+            _unitOfWork.Service.Remove(objFromDb);
 
             _unitOfWork.Save();
 
@@ -43,29 +43,29 @@ namespace Elite.Controllers
         [HttpGet]
         public override IActionResult Details(int id)
         {
-            return Json(new { data = _unitOfWork.ServiceCat.Get(id) });
+            return Json(new { data = _unitOfWork.Service.Get(id) });
         }
 
         [HttpGet]
         public override IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.ServiceCat.GetAll(includeProperties: "Category") });
+            return Json(new { data = _unitOfWork.Service.GetAll(includeProperties: "ServiceCat") });
         }
 
         public override IActionResult Upsert(int? id)
         {
-            ServiceCatVM serviceCatVM = new ServiceCatVM()
+            ServiceVM serviceVM = new ServiceVM()
             {
-                ServiceCat = new ServiceCat(),
-                CategoryList = _unitOfWork.Category.GetCategoryForDropDown()
+                Service = new Service(),
+                ServiceCatList = _unitOfWork.ServiceCat.GetServiceCatForDropDown()
             };
 
             if (id != null)
             {
-                serviceCatVM.ServiceCat = _unitOfWork.ServiceCat.Get(id.GetValueOrDefault());
+                serviceVM.Service = _unitOfWork.Service.Get(id.GetValueOrDefault());
             }
 
-            return View(serviceCatVM);
+            return View(serviceVM);
         }
 
         [HttpPost]
@@ -78,12 +78,12 @@ namespace Elite.Controllers
 
                 var files = HttpContext.Request.Form.Files;
 
-                if (serviceCatVM.ServiceCat.Id == 0)
+                if (serviceVM.Service.Id == 0)
                 {
                     //New service cat
                     string fileName = Guid.NewGuid().ToString();
 
-                    var uploads = Path.Combine(webRootPath, @"images\serviceCat");
+                    var uploads = Path.Combine(webRootPath, @"images\service");
 
                     var extension = Path.GetExtension(files[0].FileName);
 
@@ -92,24 +92,24 @@ namespace Elite.Controllers
                         files[0].CopyTo(fileStreams);
                     }
 
-                    serviceCatVM.ServiceCat.ImageUrl = @"\images\serviceCat\" + fileName + extension;
+                    serviceVM.Service.ImageUrl = @"\images\service\" + fileName + extension;
 
-                    _unitOfWork.ServiceCat.Add(serviceCatVM.ServiceCat);
+                    _unitOfWork.Service.Add(serviceVM.Service);
                 }
                 else
                 {
                     //Edit service cat
-                    var serviceCatFromDb = _unitOfWork.ServiceCat.Get(serviceCatVM.ServiceCat.Id);
+                    var serviceFromDb = _unitOfWork.Service.Get(serviceVM.Service.Id);
 
                     if (files.Count > 0)
                     {
                         string fileName = Guid.NewGuid().ToString();
 
-                        var uploads = Path.Combine(webRootPath, @"images\serviceCat");
+                        var uploads = Path.Combine(webRootPath, @"images\service");
 
                         var extension_new = Path.GetExtension(files[0].FileName);
 
-                        var imagePath = Path.Combine(webRootPath, serviceCatFromDb.ImageUrl.TrimStart('\\'));
+                        var imagePath = Path.Combine(webRootPath, serviceFromDb.ImageUrl.TrimStart('\\'));
 
                         if (System.IO.File.Exists(imagePath))
                         {
@@ -121,14 +121,14 @@ namespace Elite.Controllers
                             files[0].CopyTo(fileStreams);
                         }
 
-                        serviceCatVM.ServiceCat.ImageUrl = @"\images\serviceCat\" + fileName + extension_new;
+                        serviceVM.Service.ImageUrl = @"\images\service\" + fileName + extension_new;
                     }
                     else
                     {
-                        serviceCatVM.ServiceCat.ImageUrl = serviceCatFromDb.ImageUrl;
+                        serviceVM.Service.ImageUrl = serviceFromDb.ImageUrl;
                     }
 
-                    _unitOfWork.ServiceCat.Update(serviceCatVM.ServiceCat);
+                    _unitOfWork.Service.Update(serviceVM.Service);
                 }
                 _unitOfWork.Save();
 
@@ -136,7 +136,7 @@ namespace Elite.Controllers
             }
             else
             {
-                return View(serviceCatVM);
+                return View(serviceVM);
             }
         }
     }
