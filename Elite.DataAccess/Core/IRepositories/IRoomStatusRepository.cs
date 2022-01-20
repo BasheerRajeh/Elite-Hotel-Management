@@ -11,6 +11,7 @@ namespace Elite.DataAccess.Core.IRepositories
     {
         IEnumerable<SelectListItem> GetRoomStatusForDropDown();
 
-        void Update(RoomStatus roomStatus);
+        /*        void Update(RoomStatus roomStatus);
+        */
     }
 }

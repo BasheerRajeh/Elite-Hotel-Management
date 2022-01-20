@@ -9,6 +9,7 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface IHotelRepository : IRepository<Hotel>
     {
-        void Update(Hotel hotel);
+        /*        void Update(Hotel hotel);
+        */
     }
 }

@@ -6,10 +6,11 @@ using Elite.AppDbContext;
 
 namespace Elite.DataAccess.Core.IRepositories
 {
-    public interface IFeatureRepository: IRepository<Feature>
+    public interface IFeatureRepository : IRepository<Feature>
     {
         IEnumerable<SelectListItem> GetFeatureForDropDown();
 
-        void Update(Feature feature);
+        /*        void Update(Feature feature);
+        */
     }
 }

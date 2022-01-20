@@ -20,7 +20,7 @@ namespace Elite.Controllers
 
         public override void OnActionExecuted(ActionExecutedContext context)
         {
-            TempData["Msg"] = "som";
+            //TempData["Msg"] = "som";
             base.OnActionExecuted(context);
         }
 

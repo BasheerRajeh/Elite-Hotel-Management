@@ -33,7 +33,7 @@ namespace Elite.Controllers
                 return View(hotel);
             }
 
-            hotel = _unitOfWork.Hotel.Get(id);
+            hotel = _unitOfWork.Hotel.GetById(id);
 
             if (hotel == null)
             {
@@ -69,12 +69,12 @@ namespace Elite.Controllers
 
                     hotel.ImageUrl = @"\images\hotels\" + fileName + extension;
 
-                    _unitOfWork.Hotel.Add(hotel);
+                    _unitOfWork.Hotel.Insert(hotel);
                 }
                 else
                 {
                     //Edit Hotel
-                    var hotelFromDb = _unitOfWork.Hotel.Get(hotel.Id);
+                    var hotelFromDb = _unitOfWork.Hotel.GetById(hotel.Id);
 
                     if (files.Count > 0)
                     {
@@ -126,14 +126,14 @@ namespace Elite.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var objFromDb = _unitOfWork.Hotel.Get(id);
+            var objFromDb = _unitOfWork.Hotel.GetById(id);
 
             if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting." });
             }
 
-            _unitOfWork.Hotel.Remove(objFromDb);
+            _unitOfWork.Hotel.Delete(objFromDb);
 
             _unitOfWork.Save();
 
@@ -143,7 +143,7 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return Json(new { data = _unitOfWork.Hotel.Get(id) });
+            return Json(new { data = _unitOfWork.Hotel.GetById(id) });
         }
 
         #endregion API CALLS

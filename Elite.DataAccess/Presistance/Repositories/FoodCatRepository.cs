@@ -27,11 +27,12 @@ namespace Elite.DataAccess.Presistance.Repositories
             });
         }
 
-        public void Update(FoodCat foodCat)
-        {
-            var objFromDb = _db.FoodCat.FirstOrDefault(s => s.Id == foodCat.Id);
-            objFromDb.Name = foodCat.Name;
-            _db.SaveChanges();
-        }
+        /*        public void Update(FoodCat foodCat)
+                {
+                    var objFromDb = _db.FoodCat.FirstOrDefault(s => s.Id == foodCat.Id);
+                    objFromDb.Name = foodCat.Name;
+                    _db.SaveChanges();
+                }
+        */
     }
 }

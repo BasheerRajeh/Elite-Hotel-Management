@@ -9,6 +9,7 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface IOrderRepository : IRepository<Order>
     {
-        void Update(Order order);
+        /*        void Update(Order order);
+        */
     }
 }

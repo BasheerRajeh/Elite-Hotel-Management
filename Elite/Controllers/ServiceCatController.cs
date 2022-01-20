@@ -3,6 +3,7 @@ using Elite.AppDbContext.ViewModels;
 using Elite.DataAccess.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -31,14 +32,14 @@ namespace Elite.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var objFromDb = _unitOfWork.ServiceCat.Get(id);
+            var objFromDb = _unitOfWork.ServiceCat.GetById(id);
 
             if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting." });
             }
 
-            _unitOfWork.ServiceCat.Remove(objFromDb);
+            _unitOfWork.ServiceCat.Delete(objFromDb);
 
             _unitOfWork.Save();
 
@@ -48,13 +49,13 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return Json(new { data = _unitOfWork.ServiceCat.Get(id) });
+            return Json(new { data = _unitOfWork.ServiceCat.GetById(id) });
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.ServiceCat.GetAll(includeProperties: "Category") });
+            return Json(new { data = _unitOfWork.ServiceCat.GetAll().Include("Category") });
         }
 
         public IActionResult Upsert(int? id)
@@ -67,7 +68,7 @@ namespace Elite.Controllers
 
             if (id != null)
             {
-                serviceCatVM.ServiceCat = _unitOfWork.ServiceCat.Get(id.GetValueOrDefault());
+                serviceCatVM.ServiceCat = _unitOfWork.ServiceCat.GetById(id.GetValueOrDefault());
             }
 
             return View(serviceCatVM);
@@ -99,12 +100,12 @@ namespace Elite.Controllers
 
                     serviceCatVM.ServiceCat.ImageUrl = @"\images\serviceCat\" + fileName + extension;
 
-                    _unitOfWork.ServiceCat.Add(serviceCatVM.ServiceCat);
+                    _unitOfWork.ServiceCat.Insert(serviceCatVM.ServiceCat);
                 }
                 else
                 {
                     //Edit service cat
-                    var serviceCatFromDb = _unitOfWork.ServiceCat.Get(serviceCatVM.ServiceCat.Id);
+                    var serviceCatFromDb = _unitOfWork.ServiceCat.GetById(serviceCatVM.ServiceCat.Id);
 
                     if (files.Count > 0)
                     {

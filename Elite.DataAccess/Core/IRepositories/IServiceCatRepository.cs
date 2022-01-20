@@ -10,6 +10,7 @@ namespace Elite.DataAccess.Core.IRepositories
     {
         IEnumerable<SelectListItem> GetServiceCatForDropDown();
 
-        void Update(ServiceCat serviceCat);
+        /*        void Update(ServiceCat serviceCat);
+        */
     }
 }

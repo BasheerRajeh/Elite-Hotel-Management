@@ -11,6 +11,7 @@ namespace Elite.DataAccess.Core.IRepositories
     {
         IEnumerable<SelectListItem> GetFoodCatForDropDown();
 
-        void Update(FoodCat foodCat);
+        /*        void Update(FoodCat foodCat);
+        */
     }
 }

@@ -9,6 +9,7 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface IReservationRepository : IRepository<Reservation>
     {
-        void Update(Reservation reservation);
+        /*        void Update(Reservation reservation);
+        */
     }
 }

@@ -27,14 +27,15 @@ namespace Elite.DataAccess.Presistance.Repositories
             });
         }
 
-        public void Update(Package package)
-        {
-            var objFromDb = _db.Package.FirstOrDefault(s => s.Id == package.Id);
-            objFromDb.Name = package.Name;
-            objFromDb.RoomId = package.RoomId;
-            objFromDb.FeatureId = package.FeatureId;
+        /*        public void Update(Package package)
+                {
+                    var objFromDb = _db.Package.FirstOrDefault(s => s.Id == package.Id);
+                    objFromDb.Name = package.Name;
+                    objFromDb.RoomId = package.RoomId;
+                    objFromDb.FeatureId = package.FeatureId;
 
-            _db.SaveChanges();
-        }
+                    _db.SaveChanges();
+                }
+        */
     }
 }

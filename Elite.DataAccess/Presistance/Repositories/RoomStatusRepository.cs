@@ -27,13 +27,14 @@ namespace Elite.DataAccess.Presistance.Repositories
             });
         }
 
-        public void Update(RoomStatus roomStatus)
-        {
-            var objFromDb = _db.RoomStatus.FirstOrDefault(s => s.Id == roomStatus.Id);
-            objFromDb.Name = roomStatus.Name;
-            objFromDb.Value = roomStatus.Value;
+        /*        public void Update(RoomStatus roomStatus)
+                {
+                    var objFromDb = _db.RoomStatus.FirstOrDefault(s => s.Id == roomStatus.Id);
+                    objFromDb.Name = roomStatus.Name;
+                    objFromDb.Value = roomStatus.Value;
 
-            _db.SaveChanges();
-        }
+                    _db.SaveChanges();
+                }
+        */
     }
 }

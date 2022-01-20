@@ -9,6 +9,7 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface IRoomRepository : IRepository<Room>
     {
-        void Update(Room room);
+        /*        void Update(Room room);
+        */
     }
 }

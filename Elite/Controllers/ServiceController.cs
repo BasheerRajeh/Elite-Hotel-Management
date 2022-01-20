@@ -32,14 +32,14 @@ namespace Elite.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var objFromDb = _unitOfWork.Service.Get(id);
+            var objFromDb = _unitOfWork.Service.GetById(id);
 
             if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting." });
             }
 
-            _unitOfWork.Service.Remove(objFromDb);
+            _unitOfWork.Service.Delete(objFromDb);
 
             _unitOfWork.Save();
 
@@ -49,13 +49,13 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return Json(new { data = _unitOfWork.Service.Get(id) });
+            return Json(new { data = _unitOfWork.Service.GetById(id) });
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Service.GetAll(includeProperties: "ServiceCat") }); ;//().Include(e => e.ServiceCat)
+            return Json(new { data = _unitOfWork.Service.GetAll().Include("ServiceCat") });//().Include(e => e.ServiceCat)
         }
 
         public IActionResult Upsert(int? id)
@@ -68,7 +68,7 @@ namespace Elite.Controllers
 
             if (id != null)
             {
-                serviceVM.Service = _unitOfWork.Service.Get(id.GetValueOrDefault());
+                serviceVM.Service = _unitOfWork.Service.GetById(id.GetValueOrDefault());
             }
 
             return View(serviceVM);
@@ -100,12 +100,12 @@ namespace Elite.Controllers
 
                     serviceVM.Service.ImageUrl = @"\images\service\" + fileName + extension;
 
-                    _unitOfWork.Service.Add(serviceVM.Service);
+                    _unitOfWork.Service.Insert(serviceVM.Service);
                 }
                 else
                 {
                     //Edit service cat
-                    var serviceFromDb = _unitOfWork.Service.Get(serviceVM.Service.Id);
+                    var serviceFromDb = _unitOfWork.Service.GetById(serviceVM.Service.Id);
 
                     if (files.Count > 0)
                     {

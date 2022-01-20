@@ -11,6 +11,7 @@ namespace Elite.DataAccess.Core.IRepositories
     {
         IEnumerable<SelectListItem> GetCategoryForDropDown();
 
-        void Update(Category category);
+        /*        void Update(Category category);
+        */
     }
 }

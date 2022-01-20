@@ -33,7 +33,7 @@ namespace Elite.Controllers
                 return View(category);
             }
 
-            category = _unitOfWork.Category.Get(id);
+            category = _unitOfWork.Category.GetById(id);
 
             if (category == null)
             {
@@ -69,12 +69,12 @@ namespace Elite.Controllers
 
                     category.ImageUrl = @"\images\categories\" + fileName + extension;
 
-                    _unitOfWork.Category.Add(category);
+                    _unitOfWork.Category.Insert(category);
                 }
                 else
                 {
                     //Edit category
-                    var categoryFromDb = _unitOfWork.Category.Get(category.Id);
+                    var categoryFromDb = _unitOfWork.Category.GetById(category.Id);
 
                     if (files.Count > 0)
                     {
@@ -126,14 +126,14 @@ namespace Elite.Controllers
         [HttpDelete]
         public IActionResult Delete(int id)
         {
-            var objFromDb = _unitOfWork.Category.Get(id);
+            var objFromDb = _unitOfWork.Category.GetById(id);
 
             if (objFromDb == null)
             {
                 return Json(new { success = false, message = "Error while deleting." });
             }
 
-            _unitOfWork.Category.Remove(objFromDb);
+            _unitOfWork.Category.Delete(objFromDb);
 
             _unitOfWork.Save();
 
@@ -143,7 +143,7 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return Json(new { data = _unitOfWork.Category.Get(id) });
+            return Json(new { data = _unitOfWork.Category.GetById(id) });
         }
 
         #endregion API CALLS
