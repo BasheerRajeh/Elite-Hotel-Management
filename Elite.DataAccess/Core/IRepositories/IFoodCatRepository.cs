@@ -10,8 +10,5 @@ namespace Elite.DataAccess.Core.IRepositories
     public interface IFoodCatRepository : IRepository<FoodCat>
     {
         IEnumerable<SelectListItem> GetFoodCatForDropDown();
-
-        /*        void Update(FoodCat foodCat);
-        */
     }
 }

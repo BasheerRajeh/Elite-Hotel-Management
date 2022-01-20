@@ -9,8 +9,5 @@ namespace Elite.DataAccess.Core.IRepositories
     public interface IServiceCatRepository : IRepository<ServiceCat>
     {
         IEnumerable<SelectListItem> GetServiceCatForDropDown();
-
-        /*        void Update(ServiceCat serviceCat);
-        */
     }
 }

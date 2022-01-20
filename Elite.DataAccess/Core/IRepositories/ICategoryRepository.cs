@@ -10,8 +10,5 @@ namespace Elite.DataAccess.Core.IRepositories
     public interface ICategoryRepository : IRepository<Category>
     {
         IEnumerable<SelectListItem> GetCategoryForDropDown();
-
-        /*        void Update(Category category);
-        */
     }
 }

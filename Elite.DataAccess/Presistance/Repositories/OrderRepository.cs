@@ -17,18 +17,5 @@ namespace Elite.DataAccess.Presistance.Repositories
         {
             _db = db;
         }
-
-        /*    public void Update(Order order)
-                {
-                    var objFromDb = _db.Order.FirstOrDefault(s => s.Id == order.Id);
-                    objFromDb.OrderNum = order.OrderNum;
-                    objFromDb.ReservationId = order.ReservationId;
-                    objFromDb.FoodItemId = order.FoodItemId;
-                    objFromDb.Time = order.Time;
-                    objFromDb.Quantity = order.Quantity;
-
-                    _db.SaveChanges();
-                }
-        */
     }
 }

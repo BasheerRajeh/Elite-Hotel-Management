@@ -27,20 +27,5 @@ namespace Elite.DataAccess.Presistance.Repositories
                 Value = i.Id.ToString(),
             });
         }
-
-        /*        public override Service Get(object id)
-                {
-                    return dbSet.Where(sc => sc.Id == (int)id).Include(sc => sc.ServiceCat).FirstOrDefault();
-                }
-
-                public void Update(Service service)
-                {
-                    var objFromDb = _db.Service.FirstOrDefault(s => s.Id == service.Id);
-                    objFromDb.Name = service.Name;
-                    objFromDb.Price = service.Price;
-                    objFromDb.ServiceCatId = service.ServiceCatId;
-                    _db.SaveChanges();
-                }
-        */
     }
 }

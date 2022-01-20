@@ -26,14 +26,5 @@ namespace Elite.DataAccess.Presistance.Repositories
                 Value = i.Id.ToString(),
             });
         }
-
-        /*        public void Update(Feature feature)
-                {
-                    var objFromDb = _db.Feature.FirstOrDefault(s => s.Id == feature.Id);
-                    objFromDb.Name = feature.Name;
-                    objFromDb.Value = feature.Value;
-                    _db.SaveChanges();
-                }
-        */
     }
 }

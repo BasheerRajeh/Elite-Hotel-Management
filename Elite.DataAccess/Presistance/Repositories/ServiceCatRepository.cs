@@ -18,12 +18,6 @@ namespace Elite.DataAccess.Presistance.Repositories
             _db = db;
         }
 
-        /*        public override ServiceCat Get(object id)
-                {
-                    return dbSet.Where(sc => sc.Id == (int)id).Include(sc => sc.Category).FirstOrDefault();
-                }
-        */
-
         public IEnumerable<SelectListItem> GetServiceCatForDropDown()
         {
             return _db.ServiceCat.Select(i => new SelectListItem()
@@ -32,16 +26,5 @@ namespace Elite.DataAccess.Presistance.Repositories
                 Value = i.Id.ToString(),
             });
         }
-
-        /*        public void Update(ServiceCat serviceCat)
-                {
-                    var objFromDb = _db.ServiceCat.FirstOrDefault(s => s.Id == serviceCat.Id);
-                    objFromDb.Name = serviceCat.Name;
-                    objFromDb.CategoryId = serviceCat.CategoryId;
-                    objFromDb.ImageUrl = serviceCat.ImageUrl;
-
-                    _db.SaveChanges();
-                }
-        */
     }
 }

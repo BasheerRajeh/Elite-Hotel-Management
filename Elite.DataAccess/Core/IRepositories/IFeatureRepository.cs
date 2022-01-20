@@ -9,8 +9,5 @@ namespace Elite.DataAccess.Core.IRepositories
     public interface IFeatureRepository : IRepository<Feature>
     {
         IEnumerable<SelectListItem> GetFeatureForDropDown();
-
-        /*        void Update(Feature feature);
-        */
     }
 }

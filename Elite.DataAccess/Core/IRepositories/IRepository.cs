@@ -8,30 +8,6 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface IRepository<DbModel> where DbModel : class
     {
-        #region oldcode
-
-        /*        T Get(object id);
-
-                IEnumerable<T> GetAll(
-                    Expression<Func<T, bool>> filter = null,
-                    Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-                    string includeProperties = null
-                    );
-
-                T GetFirstOrDefault(
-                    Expression<Func<T, bool>> filter = null,
-                    string includeProperties = null
-                    );
-
-                void Add(T entity);
-
-                void Remove(object id);
-
-                void Remove(T entity);
-        */
-
-        #endregion oldcode
-
         DbModel GetById(object id);
 
         bool IsExist(object id);

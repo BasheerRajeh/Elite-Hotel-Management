@@ -9,7 +9,5 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface ISpecialServiceRepository : IRepository<SpecialService>
     {
-        /*        void Update(SpecialService specialService);
-        */
     }
 }

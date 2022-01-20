@@ -10,8 +10,5 @@ namespace Elite.DataAccess.Core.IRepositories
     public interface IServiceRepository : IRepository<Service>
     {
         IEnumerable<SelectListItem> GetServiceForDropDown();
-
-        /*        void Update(Service service);
-        */
     }
 }

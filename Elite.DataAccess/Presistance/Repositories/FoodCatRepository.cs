@@ -26,13 +26,5 @@ namespace Elite.DataAccess.Presistance.Repositories
                 Value = i.Id.ToString(),
             });
         }
-
-        /*        public void Update(FoodCat foodCat)
-                {
-                    var objFromDb = _db.FoodCat.FirstOrDefault(s => s.Id == foodCat.Id);
-                    objFromDb.Name = foodCat.Name;
-                    _db.SaveChanges();
-                }
-        */
     }
 }

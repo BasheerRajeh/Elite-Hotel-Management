@@ -17,15 +17,5 @@ namespace Elite.DataAccess.Presistance.Repositories
         {
             _db = db;
         }
-
-        /*        public void Update(SpecialService specialService)
-                {
-                    var objFromDb = _db.SpecialService.FirstOrDefault(s => s.Id == specialService.Id);
-                    objFromDb.ServiceCatId = specialService.ServiceCatId;
-                    objFromDb.ReservationId = specialService.ReservationId;
-
-                    _db.SaveChanges();
-                }
-        */
     }
 }

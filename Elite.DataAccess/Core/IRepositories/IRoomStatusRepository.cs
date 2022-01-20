@@ -10,8 +10,5 @@ namespace Elite.DataAccess.Core.IRepositories
     public interface IRoomStatusRepository : IRepository<RoomStatus>
     {
         IEnumerable<SelectListItem> GetRoomStatusForDropDown();
-
-        /*        void Update(RoomStatus roomStatus);
-        */
     }
 }

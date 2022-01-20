@@ -9,7 +9,5 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface IFoodItemRepository : IRepository<FoodItem>
     {
-        /*        void Update(FoodItem foodItem);
-        */
     }
 }

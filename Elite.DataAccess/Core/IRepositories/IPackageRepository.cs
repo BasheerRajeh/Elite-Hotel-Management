@@ -10,8 +10,5 @@ namespace Elite.DataAccess.Core.IRepositories
     public interface IPackageRepository : IRepository<Package>
     {
         IEnumerable<SelectListItem> GetPackageForDropDown();
-
-        /*        void Update(Package package);
-        */
     }
 }

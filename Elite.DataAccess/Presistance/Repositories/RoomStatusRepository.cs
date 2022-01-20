@@ -26,15 +26,5 @@ namespace Elite.DataAccess.Presistance.Repositories
                 Value = i.Id.ToString(),
             });
         }
-
-        /*        public void Update(RoomStatus roomStatus)
-                {
-                    var objFromDb = _db.RoomStatus.FirstOrDefault(s => s.Id == roomStatus.Id);
-                    objFromDb.Name = roomStatus.Name;
-                    objFromDb.Value = roomStatus.Value;
-
-                    _db.SaveChanges();
-                }
-        */
     }
 }
