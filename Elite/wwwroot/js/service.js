@@ -99,7 +99,7 @@ function Info(url) {
 
             $('#name_popup').val(data.data.name);
 
-            $('#serviceCat_popup').val(data.data.category.name);
+            $('#serviceCat_popup').val(data.data.serviceCat.name);
 
             $('#price_popup').val(data.data.price);
         }

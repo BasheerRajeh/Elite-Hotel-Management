@@ -19,7 +19,12 @@ namespace Elite.Controllers
             this._hostEnvironment = hostEnvironment;
         }
 
-        public override IActionResult Upsert(int? id)
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Upsert(int? id)
         {
             Category category = new Category();
 
@@ -113,13 +118,13 @@ namespace Elite.Controllers
         #region API CALLS
 
         [HttpGet]
-        public override IActionResult GetAll()
+        public IActionResult GetAll()
         {
             return Json(new { data = _unitOfWork.Category.GetAll() });
         }
 
         [HttpDelete]
-        public override IActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             var objFromDb = _unitOfWork.Category.Get(id);
 
@@ -136,7 +141,7 @@ namespace Elite.Controllers
         }
 
         [HttpGet]
-        public override IActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             return Json(new { data = _unitOfWork.Category.Get(id) });
         }

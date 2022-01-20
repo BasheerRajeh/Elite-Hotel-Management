@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Elite.Controllers
 {
@@ -23,8 +24,13 @@ namespace Elite.Controllers
             this._hostEnvironment = hostEnvironment;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpDelete]
-        public override IActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             var objFromDb = _unitOfWork.Service.Get(id);
 
@@ -41,18 +47,18 @@ namespace Elite.Controllers
         }
 
         [HttpGet]
-        public override IActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             return Json(new { data = _unitOfWork.Service.Get(id) });
         }
 
         [HttpGet]
-        public override IActionResult GetAll()
+        public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Service.GetAll(includeProperties: "ServiceCat") });
+            return Json(new { data = _unitOfWork.Service.GetAll(includeProperties: "ServiceCat") }); ;//().Include(e => e.ServiceCat)
         }
 
-        public override IActionResult Upsert(int? id)
+        public IActionResult Upsert(int? id)
         {
             ServiceVM serviceVM = new ServiceVM()
             {

@@ -1,6 +1,7 @@
 ﻿using Elite.DataAccess.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,24 +18,15 @@ namespace Elite.Controllers
             this._unitOfWork = unitOfWork;
         }
 
-        public IActionResult Index()
+        public override void OnActionExecuted(ActionExecutedContext context)
         {
-            return View();
+            TempData["Msg"] = "som";
+            base.OnActionExecuted(context);
         }
 
-        public abstract IActionResult Upsert(int? id);
-
-        #region API CALLS
-
-        [HttpGet]
-        public abstract IActionResult GetAll();
-
-        [HttpDelete]
-        public abstract IActionResult Delete(int id);
-
-        [HttpGet]
-        public abstract IActionResult Details(int id);
-
-        #endregion API CALLS
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            base.OnActionExecuting(context);
+        }
     }
 }

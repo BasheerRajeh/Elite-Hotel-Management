@@ -23,8 +23,13 @@ namespace Elite.Controllers
             this._hostEnvironment = hostEnvironment;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [HttpDelete]
-        public override IActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
             var objFromDb = _unitOfWork.ServiceCat.Get(id);
 
@@ -41,18 +46,18 @@ namespace Elite.Controllers
         }
 
         [HttpGet]
-        public override IActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             return Json(new { data = _unitOfWork.ServiceCat.Get(id) });
         }
 
         [HttpGet]
-        public override IActionResult GetAll()
+        public IActionResult GetAll()
         {
             return Json(new { data = _unitOfWork.ServiceCat.GetAll(includeProperties: "Category") });
         }
 
-        public override IActionResult Upsert(int? id)
+        public IActionResult Upsert(int? id)
         {
             ServiceCatVM serviceCatVM = new ServiceCatVM()
             {

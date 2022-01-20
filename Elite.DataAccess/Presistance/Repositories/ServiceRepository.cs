@@ -1,6 +1,7 @@
 ﻿using Elite.AppDbContext;
 using Elite.DataAccess.Core.IRepositories;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,11 @@ namespace Elite.DataAccess.Presistance.Repositories
                 Text = i.Name,
                 Value = i.Id.ToString(),
             });
+        }
+
+        public override Service Get(object id)
+        {
+            return dbSet.Where(sc => sc.Id == (int)id).Include(sc => sc.ServiceCat).FirstOrDefault();
         }
 
         public void Update(Service service)
