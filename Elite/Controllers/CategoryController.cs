@@ -1,12 +1,9 @@
-﻿using Elite.AppDbContext;
+﻿using System;
+using System.IO;
+using Elite.AppDbContext;
 using Elite.DataAccess.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Elite.Controllers
 {
@@ -16,7 +13,7 @@ namespace Elite.Controllers
 
         public CategoryController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment) : base(unitOfWork)
         {
-            this._hostEnvironment = hostEnvironment;
+            _hostEnvironment = hostEnvironment;
         }
 
         public IActionResult Index()
@@ -26,19 +23,13 @@ namespace Elite.Controllers
 
         public IActionResult Upsert(int? id)
         {
-            Category category = new Category();
+            var category = new Category();
 
-            if (id == null)
-            {
-                return View(category);
-            }
+            if (id == null) return View(category);
 
             category = _unitOfWork.Category.GetById(id);
 
-            if (category == null)
-            {
-                return NotFound();
-            }
+            if (category == null) return NotFound();
 
             return View(category);
         }
@@ -49,20 +40,21 @@ namespace Elite.Controllers
         {
             if (ModelState.IsValid)
             {
-                string webRootPath = _hostEnvironment.WebRootPath;
+                var webRootPath = _hostEnvironment.WebRootPath;
 
                 var files = HttpContext.Request.Form.Files;
 
                 if (category.Id == 0)
                 {
                     //New category
-                    string fileName = Guid.NewGuid().ToString();
+                    var fileName = Guid.NewGuid().ToString();
 
                     var uploads = Path.Combine(webRootPath, @"images\categories");
 
                     var extension = Path.GetExtension(files[0].FileName);
 
-                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    using (var fileStreams =
+                        new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                     {
                         files[0].CopyTo(fileStreams);
                     }
@@ -78,25 +70,23 @@ namespace Elite.Controllers
 
                     if (files.Count > 0)
                     {
-                        string fileName = Guid.NewGuid().ToString();
+                        var fileName = Guid.NewGuid().ToString();
 
                         var uploads = Path.Combine(webRootPath, @"images\categories");
 
-                        var extension_new = Path.GetExtension(files[0].FileName);
+                        var extensionNew = Path.GetExtension(files[0].FileName);
 
                         var imagePath = Path.Combine(webRootPath, categoryFromDb.ImageUrl.TrimStart('\\'));
 
-                        if (System.IO.File.Exists(imagePath))
-                        {
-                            System.IO.File.Delete(imagePath);
-                        }
+                        if (System.IO.File.Exists(imagePath)) System.IO.File.Delete(imagePath);
 
-                        using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension_new), FileMode.Create))
+                        using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extensionNew),
+                            FileMode.Create))
                         {
                             files[0].CopyTo(fileStreams);
                         }
 
-                        category.ImageUrl = @"\images\categories\" + fileName + extension_new;
+                        category.ImageUrl = @"\images\categories\" + fileName + extensionNew;
                     }
                     else
                     {
@@ -105,14 +95,13 @@ namespace Elite.Controllers
 
                     _unitOfWork.Category.Update(category);
                 }
+
                 _unitOfWork.Save();
 
                 return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                return View(category);
-            }
+
+            return View(category);
         }
 
         #region API CALLS
@@ -120,7 +109,7 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Category.GetAll() });
+            return Json(new {data = _unitOfWork.Category.GetAll()});
         }
 
         [HttpDelete]
@@ -128,22 +117,19 @@ namespace Elite.Controllers
         {
             var objFromDb = _unitOfWork.Category.GetById(id);
 
-            if (objFromDb == null)
-            {
-                return Json(new { success = false, message = "Error while deleting." });
-            }
+            if (objFromDb == null) return Json(new {success = false, message = "Error while deleting."});
 
             _unitOfWork.Category.Delete(objFromDb);
 
             _unitOfWork.Save();
 
-            return Json(new { success = true, message = "Deleted successfully." });
+            return Json(new {success = true, message = "Deleted successfully."});
         }
 
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return Json(new { data = _unitOfWork.Category.GetById(id) });
+            return Json(new {data = _unitOfWork.Category.GetById(id)});
         }
 
         #endregion API CALLS

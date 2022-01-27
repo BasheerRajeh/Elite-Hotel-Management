@@ -1,11 +1,43 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@inject Elite.Models.LanguageService language
 
-<ul class="nav">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <li class="nav-item">
+@if (SignInManager.IsSignedIn(User))
+{
+
+    <!--Profile-->
+    <li class="sidebar-item has-sub">
+
+        <a href="#" class="sidebar-link">
+            <div class="avatar avatar-lg">
+                <img src="~/assets/images/faces/2.jpg" />
+            </div>
+            <div class="name ms-4">
+                <h5 class="mb-1">@User.Identity.Name</h5>
+                <h6 class="text-muted mb-0">@@@User.Identity.Name</h6>
+            </div>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item">
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" class="sidebar-link">
+                    <i class="fas fa-user-edit"></i>
+                    <span>@language.Getkey("Profile")</span>
+                </a>
+            </li>
+            <li class="submenu-item">
+
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="sidebar-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>@language.Getkey("Logout")</span>
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </li>
+
+    @*        <li class="nav-item">
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
         </li>
         <li class="nav-item">
@@ -13,14 +45,45 @@
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
-    }
-    else
-    {
-        <li class="nav-item">
+    *@ }
+else
+{
+
+    <!--Profile-->
+    <li class="sidebar-item has-sub">
+
+        <a href="#" class="sidebar-link">
+            @language.Getkey("Login") | @language.Getkey("Register")
+            @*            <div class="avatar avatar-lg">
+                    <img src="~/assets/images/faces/2.jpg" />
+                </div>
+                <div class="name ms-4">
+                    <h5 class="mb-1">Basheer Rajeh</h5>
+                    <h6 class="text-muted mb-0">@@Basheer_rajeh</h6>
+                </div>
+            *@
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item">
+                <a asp-area="Identity" asp-page="/Account/Register" class="sidebar-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>@language.Getkey("Register")</span>
+                </a>
+            </li>
+            <li class="submenu-item">
+
+                <a asp-area="Identity" asp-page="/Account/Login" class="sidebar-link">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>@language.Getkey("Login")</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    @*        <li class="nav-item">
             <a class="nav-link active" asp-area="Identity" asp-page="/Account/Register">Register</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active" asp-area="Identity" asp-page="/Account/Login">Login</a>
         </li>
-    }
-</ul>
+    *@      }

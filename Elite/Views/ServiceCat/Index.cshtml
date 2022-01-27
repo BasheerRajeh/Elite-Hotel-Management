@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Elite.AppDbContext.ServiceCat>
+@inject Elite.Models.LanguageService language
 
 @{
     ViewData["Title"] = "Service Category";
@@ -25,7 +26,7 @@
 <section class="section">
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-primary rounded-pill" asp-action="Upsert">Create New</a>
+            <a class="btn btn-primary rounded-pill" asp-action="Upsert">@language.Getkey("Create New")</a>
         </div>
         <div class="card-body">
             <table class="table" id="tblData">
@@ -33,14 +34,11 @@
                     <tr>
 
                         <th>
-                            @Html.DisplayNameFor(model => model.Name)
+                            @language.Getkey(@Html.DisplayNameFor(model => model.Name))
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.CategoryId)
+                            @language.Getkey(@Html.DisplayNameFor(model => model.CategoryId))
                         </th>
-                        @* <th>
-                                @Html.DisplayNameFor(model => model.PricePerNight)
-                            </th> *@
                         <th></th>
                     </tr>
                 </thead>
@@ -67,7 +65,7 @@
 
                                         <div class="form-group row align-items-center">
                                             <div class="col-lg-4 col-3">
-                                                @Html.DisplayNameFor(model => model.Name)
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.Name))
                                             </div>
                                             <div class="col-lg-8 col-9">
                                                 <input value="undefiend" class="form-control" id="name_popup" disabled>
@@ -76,7 +74,7 @@
 
                                         <div class="form-group row align-items-center">
                                             <div class="col-lg-4 col-3">
-                                                @Html.DisplayNameFor(model => model.CategoryId)
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.CategoryId))
                                             </div>
                                             <div class="col-lg-8 col-9">
                                                 <input value="" class="form-control" id="category_popup" disabled>
@@ -100,7 +98,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
                         <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Close</span>
+                        <span class="d-none d-sm-block">@language.Getkey("Close")</span>
                     </button>
                 </div>
             </div>

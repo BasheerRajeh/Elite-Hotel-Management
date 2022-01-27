@@ -76,7 +76,7 @@ function Delete(url) {
                     } else {
                         //toastr.error(data.message);
                         Toastify({
-                            text: "faild delete",
+                            text: "failed delete",
                             duration: 3000,
                             background: "#B33A3A",
                             close: true,

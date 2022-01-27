@@ -1,28 +1,70 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@inject Elite.Models.LanguageService language
 
 <div class="sidebar-wrapper active">
     <div class="sidebar-header">
         <div class="d-flex justify-content-between">
-            <div class="logo">
-                <a href="index.html"><img src="~/assets/images/logo/logo.png" alt="Logo" srcset="" /></a>
-            </div>
-            <div class="toggler">
-                <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+
+            <div class="row">
+                <div class="logo col-10">
+                    <a href="home"><img src="~/assets/images/logo/logo.png" alt="Logo" srcset="" /></a>
+                </div>
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-language" aria-hidden="true"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="en-Us">@language.Getkey("English")</a>
+
+                            <a class="dropdown-item" asp-controller="Home" asp-action="ChangeLanguage" asp-route-culture="ar-Eg">@language.Getkey("Arabic")</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="sidebar-menu">
+
         <ul class="menu">
-            <li class="sidebar-title">Menu</li>
+
+            <partial name="_LoginPartial" />
+
+            <!--Profile-->
+            <!--<li class="sidebar-item has-sub">
+
+                <a href="#" class="sidebar-link">
+                    <div class="avatar avatar-lg">
+                        <img src="~/assets/images/faces/2.jpg" />
+                    </div>
+                    <div class="name ms-4">
+                        <h5 class="mb-1">Hank Schrader</h5>
+                        <h6 class="text-muted mb-0">@@johnducky</h6>
+                    </div>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a sp-controller="Home" asp-action="Index" class="sidebar-link">
+                            <i class="fas fa-edit"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a sp-controller="Home" asp-action="Index" class="sidebar-link">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>-->
+
+            <li class="sidebar-title">@language.Getkey("Menu")</li>
 
             <li class="sidebar-item active">
-                <a href="index.html" class="sidebar-link">
+                <a asp-controller="Home" asp-action="Index" class="sidebar-link">
                     <i class="bi bi-grid-fill"></i>
-                    <span>Dashboard</span>
+                    <span>@language.Getkey("Dashboard")</span>
                 </a>
             </li>
 
@@ -30,14 +72,14 @@
             <li class="sidebar-item has-sub">
                 <a href="#" class="sidebar-link">
                     <i class="fas fa-hotel"></i>
-                    <span>Hotel</span>
+                    <span>@language.Getkey("Hotel")</span>
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a asp-controller="Hotel" asp-action="Index">Display All</a>
+                        <a asp-controller="Hotel" asp-action="Index">@language.Getkey("Display All")</a>
                     </li>
                     <li class="submenu-item">
-                        <a asp-controller="Hotel" asp-action="Upsert">Add Hotel</a>
+                        <a asp-controller="Hotel" asp-action="Upsert">@language.Getkey("Add") @language.Getkey("Hotel")</a>
                     </li>
                 </ul>
             </li>
@@ -46,14 +88,14 @@
             <li class="sidebar-item has-sub">
                 <a href="#" class="sidebar-link">
                     <i class="fa fa-th-list"></i>
-                    <span>Category</span>
+                    <span>@language.Getkey("Category")</span>
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a asp-controller="Category" asp-action="Index">Display All</a>
+                        <a asp-controller="Category" asp-action="Index">@language.Getkey("Display All")</a>
                     </li>
                     <li class="submenu-item">
-                        <a asp-controller="Category" asp-action="Upsert">Add Category</a>
+                        <a asp-controller="Category" asp-action="Upsert">@language.Getkey("Add") @language.Getkey("Category")</a>
                     </li>
                 </ul>
             </li>
@@ -62,14 +104,14 @@
             <li class="sidebar-item has-sub">
                 <a href="#" class="sidebar-link">
                     <i class="fas fa-object-group"></i>
-                    <span>Service Category</span>
+                    <span>@language.Getkey("Service Category")</span>
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a asp-controller="ServiceCat" asp-action="Index">Display All</a>
+                        <a asp-controller="ServiceCat" asp-action="Index">@language.Getkey("Display All")</a>
                     </li>
                     <li class="submenu-item">
-                        <a asp-controller="ServiceCat" asp-action="Upsert">Add Service Category</a>
+                        <a asp-controller="ServiceCat" asp-action="Upsert">@language.Getkey("Add") @language.Getkey("Service Category")</a>
                     </li>
                 </ul>
             </li>
@@ -78,52 +120,49 @@
             <li class="sidebar-item has-sub">
                 <a href="#" class="sidebar-link">
                     <i class='fa fa-hotel'></i>
-                    <span>Service</span>
+                    <span>@language.Getkey("Service")</span>
                 </a>
                 <ul class="submenu">
                     <li class="submenu-item">
-                        <a asp-controller="Service" asp-action="Index">Display All</a>
+                        <a asp-controller="Service" asp-action="Index">@language.Getkey("Display All")</a>
                     </li>
                     <li class="submenu-item">
-                        <a asp-controller="Service" asp-action="Upsert">Add Service</a>
+                        <a asp-controller="Service" asp-action="Upsert">@language.Getkey("Add") @language.Getkey("Service")</a>
                     </li>
                 </ul>
             </li>
 
-            <!--Food Category-->
-            <li class="sidebar-item has-sub">
-                <a href="#" class="sidebar-link">
-                    <i class="fas fa-pizza-slice"></i>
-                    <span>Food Category</span>
-                </a>
-                <ul class="submenu">
-                    <li class="submenu-item">
-                        <a asp-controller="Food Category" asp-action="Index">Display All</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a asp-controller="Food Category" asp-action="Add">Add Food Category</a>
-                    </li>
-                </ul>
-            </li>
-
-            <!--Feature-->
-            <li class="sidebar-item has-sub">
-                <a href="#" class="sidebar-link">
-                    <i class="bi bi-stack"></i>
-                    <span>Feature</span>
-                </a>
-                <ul class="submenu">
-                    <li class="submenu-item">
-                        <a asp-controller="Feature" asp-action="Index">Display All</a>
-                    </li>
-                    <li class="submenu-item">
-                        <a asp-controller="Feature" asp-action="Add">Add Feature</a>
-                    </li>
-                </ul>
-            </li>
+            @* <!--Food Category--> *@
+            @* <li class="sidebar-item has-sub"> *@
+            @*     <a href="#" class="sidebar-link"> *@
+            @*         <i class="fas fa-pizza-slice"></i> *@
+            @*         <span>@language.Getkey("Food Category")</span> *@
+            @*     </a> *@
+            @*     <ul class="submenu"> *@
+            @*         <li class="submenu-item"> *@
+            @*             <a asp-controller="Food Category" asp-action="Index">@language.Getkey("Display All")</a> *@
+            @*         </li> *@
+            @*         <li class="submenu-item"> *@
+            @*             <a asp-controller="Food Category" asp-action="Add">@language.Getkey("Add") @language.Getkey("Food Category")</a> *@
+            @*         </li> *@
+            @*     </ul> *@
+            @* </li> *@
+            @* *@
+            @* <!--Feature--> *@
+            @* <li class="sidebar-item has-sub"> *@
+            @*     <a href="#" class="sidebar-link"> *@
+            @*         <i class="bi bi-stack"></i> *@
+            @*         <span>@language.Getkey("Feature")</span> *@
+            @*     </a> *@
+            @*     <ul class="submenu"> *@
+            @*         <li class="submenu-item"> *@
+            @*             <a asp-controller="Feature" asp-action="Index">@language.Getkey("Display All")</a> *@
+            @*         </li> *@
+            @*         <li class="submenu-item"> *@
+            @*             <a asp-controller="Feature" asp-action="Add">@language.Getkey("Add") @language.Getkey("Feature")</a> *@
+            @*         </li> *@
+            @*     </ul> *@
+            @* </li> *@
         </ul>
     </div>
-    <button class="sidebar-toggler btn x">
-        <i data-feather="x"></i>
-    </button>
 </div>
