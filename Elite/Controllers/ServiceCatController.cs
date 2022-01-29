@@ -142,6 +142,7 @@ namespace Elite.Controllers
             }
             else
             {
+                serviceCatVM.CategoryList = _unitOfWork.Category.GetCategoryForDropDown();
                 return View(serviceCatVM);
             }
         }

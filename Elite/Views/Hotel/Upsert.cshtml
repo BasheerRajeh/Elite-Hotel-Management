@@ -1,4 +1,5 @@
 ﻿@model Elite.AppDbContext.Hotel
+@inject Elite.Models.LanguageService language
 
 @{
 
@@ -6,7 +7,7 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var title = "Create Hotel";
+    var title = language.Getkey("Create Hotel");
 }
 
 <section class="section">
@@ -17,7 +18,7 @@
             @if (Model.Id != 0)
             {
                 <input type="hidden" asp-for="Id" />
-                title = "Edit Hotel";
+                title = language.Getkey("Edit Hotel");
             }
 
             <div class="card-header">
@@ -31,7 +32,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="Name"></label>
+                                    @language.Getkey(@Html.DisplayNameFor(model => model.Name))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input asp-for="Name" class="form-control">
@@ -41,7 +42,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="City"></label>
+                                    @language.Getkey(@Html.DisplayNameFor(model => model.City))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input asp-for="City" class="form-control">
@@ -51,7 +52,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="ImageUrl"></label>
+                                    @language.Getkey(@Html.DisplayNameFor(model => model.ImageUrl))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input type="file" name="files" id="uploadBox" asp-for="Name" multiple class="form-control">
@@ -69,22 +70,22 @@
 
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Id">Update</button>
+                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Id">@language.Getkey("Update")</button>
                                             </div>
 
                                             <div class="col">
-                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
+                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">@language.Getkey("Back to List")</a>
                                             </div>
                                         </div> }
                                     else
                                     {
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" onclick="return validateInput()" class="col-lg-12 btn btn-success">Create</button>
+                                                <button type="submit" onclick="return validateInput()" class="col-lg-12 btn btn-success">@language.Getkey("Create")</button>
                                             </div>
 
                                             <div class="col">
-                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
+                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">@language.Getkey("Back to List")</a>
                                             </div>
                                         </div>
                                     }

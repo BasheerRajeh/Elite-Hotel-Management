@@ -1,4 +1,5 @@
 ﻿@model Elite.AppDbContext.ViewModels.ServiceVM
+@inject Elite.Models.LanguageService language
 
 @{
 
@@ -6,7 +7,7 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    var title = "Create Service";
+    var title = language.Getkey("Create Service");
 }
 
 <section class="section">
@@ -17,7 +18,7 @@
             @if (Model.Service.Id != 0)
             {
                 <input type="hidden" asp-for="Service.Id" />
-                title = "Edit Service";
+                title = language.Getkey("Edit Service");
             }
 
             <div class="card-header">
@@ -31,7 +32,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="Service.Name"></label>
+                                    @language.Getkey(@Html.DisplayNameFor(model => model.Service.Name))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input asp-for="Service.Name" class="form-control">
@@ -41,7 +42,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="Service.ServiceCatId"></label>
+                                    @language.Getkey(@Html.DisplayNameFor(model => model.Service.ServiceCatId))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     @Html.DropDownListFor(m => m.Service.ServiceCatId, Model.ServiceCatList,
@@ -56,7 +57,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="Service.Price"></label>
+                                    @language.Getkey(@Html.DisplayNameFor(model => model.Service.Price))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <div class="input-group">
@@ -71,7 +72,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="Service.ImageUrl"></label>
+                                    @language.Getkey(@Html.DisplayNameFor(model => model.Service.ImageUrl))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input type="file" name="files" id="uploadBox" asp-for="Service.ImageUrl" multiple class="form-control">
@@ -89,11 +90,11 @@
 
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Service.Id">Update</button>
+                                                <button type="submit" class="col-lg-12 btn btn-warning text-dark" asp-route-id="Model.Service.Id">@language.Getkey("Update")</button>
                                             </div>
 
                                             <div class="col">
-                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
+                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">@language.Getkey("Back to List")</a>
                                             </div>
                                         </div>
                                     }
@@ -101,11 +102,11 @@
                                     {
                                         <div class="row">
                                             <div class="col">
-                                                <button type="submit" onclick="return validateInput()" class="col-lg-12 btn btn-success">Create</button>
+                                                <button type="submit" onclick="return validateInput()" class="col-lg-12 btn btn-success">@language.Getkey("Create")</button>
                                             </div>
 
                                             <div class="col">
-                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">Back to List</a>
+                                                <a asp-action="Index" class="col-lg-12 btn btn-primary">@language.Getkey("Back to List")</a>
                                             </div>
                                         </div>
                                     }

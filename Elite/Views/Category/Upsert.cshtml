@@ -2,7 +2,6 @@
 @inject Elite.Models.LanguageService language
 
 @{
-
     ViewData["Title"] = "Category";
 
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +16,7 @@
 
             @if (Model.Id != 0)
             {
-                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Id"/>
                 title = "Edit Category";
             }
 
@@ -32,7 +31,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="Name"></label>
+                                    @language.Getkey(Html.DisplayNameFor(model => model.Name))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input asp-for="Name" class="form-control">
@@ -42,7 +41,8 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="MaxCap"></label>
+                                    @language.Getkey(Html.DisplayNameFor(model => model.MaxCap))
+
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input asp-for="MaxCap" class="form-control">
@@ -52,7 +52,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="PricePerNight"></label>
+                                    @language.Getkey(Html.DisplayNameFor(model => model.PricePerNight))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <div class="input-group">
@@ -67,7 +67,7 @@
 
                             <div class="form-group row align-items-center">
                                 <div class="col-lg-4 col-3">
-                                    <label class="col-form-label" asp-for="ImageUrl"></label>
+                                    @language.Getkey(@Html.DisplayNameFor(model => model.ImageUrl))
                                 </div>
                                 <div class="col-lg-8 col-9">
                                     <input type="file" name="files" id="uploadBox" asp-for="ImageUrl" multiple class="form-control">
@@ -91,7 +91,8 @@
                                             <div class="col">
                                                 <a asp-action="Index" class="col-lg-12 btn btn-primary">@language.Getkey("Back to List")</a>
                                             </div>
-                                        </div> }
+                                        </div>
+                                    }
                                     else
                                     {
                                         <div class="row">
@@ -113,12 +114,10 @@
 
                             @if (Model.Id != 0)
                             {
-
                                 <img class="w-100 active"
                                      id="image"
                                      src="@Model.ImageUrl"
                                      data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
-
                             }
                             else
                             {
@@ -126,7 +125,6 @@
                                      id="image"
                                      src="/images/categories/no_preview.png"
                                      data-bs-target="#Gallerycarousel" data-bs-slide-to="0">
-
                             }
                         </a>
                     </div>
@@ -147,7 +145,7 @@
                         <div class="carousel-item active">
                             <img class="d-block w-100"
                                  id="image1"
-                                 src="@Model.ImageUrl" />
+                                 src="@Model.ImageUrl"/>
                         </div>
                     </div>
                 </div>

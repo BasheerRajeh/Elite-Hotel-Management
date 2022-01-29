@@ -68,7 +68,7 @@
 
                                         <div class="form-group row align-items-center">
                                             <div class="col-lg-4 col-3">
-                                                @Html.DisplayNameFor(model => model.Name)
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.Name))
                                             </div>
                                             <div class="col-lg-8 col-9">
                                                 <input value="undefiend" class="form-control" id="name_popup" disabled>
@@ -77,7 +77,7 @@
 
                                         <div class="form-group row align-items-center">
                                             <div class="col-lg-4 col-3">
-                                                @Html.DisplayNameFor(model => model.ServiceCatId)
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.ServiceCatId))
                                             </div>
                                             <div class="col-lg-8 col-9">
                                                 <input value="" class="form-control" id="serviceCat_popup" disabled>
@@ -86,7 +86,7 @@
 
                                         <div class="form-group row align-items-center">
                                             <div class="col-lg-4 col-3">
-                                                @Html.DisplayNameFor(model => model.Price)
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.Price))
                                             </div>
                                             <div class="col-lg-8 col-9">
                                                 <input value="0" class="form-control" id="price_popup" disabled>

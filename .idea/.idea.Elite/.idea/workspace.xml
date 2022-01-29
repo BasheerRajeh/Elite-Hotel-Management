@@ -19,6 +19,7 @@
       <option value="$PROJECT_DIR$/Elite/Views/Hotel/Upsert.cshtml" />
       <option value="$PROJECT_DIR$/Elite/Controllers/CategoryController.cs" />
       <option value="$PROJECT_DIR$/Elite/wwwroot/js/category.js" />
+      <option value="$PROJECT_DIR$/Elite/Views/Category/Upsert.cshtml" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="24GqRj2NnDqMIYNkNpNQacDzi18" />
@@ -76,6 +77,7 @@
       <updated>1643267270370</updated>
       <workItem from="1643267310587" duration="864000" />
       <workItem from="1643281231803" duration="479000" />
+      <workItem from="1643298156059" duration="256000" />
     </task>
     <servers />
   </component>
