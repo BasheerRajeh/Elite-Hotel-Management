@@ -109,7 +109,7 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new {data = _unitOfWork.Category.GetAll()});
+            return Json(new { data = _unitOfWork.Category.GetAll() });
         }
 
         [HttpDelete]
@@ -117,19 +117,28 @@ namespace Elite.Controllers
         {
             var objFromDb = _unitOfWork.Category.GetById(id);
 
-            if (objFromDb == null) return Json(new {success = false, message = "Error while deleting."});
+            string webRootPath = _hostEnvironment.WebRootPath;
+
+            var imagePath = Path.Combine(webRootPath, objFromDb.ImageUrl.TrimStart('\\'));
+
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+
+            if (objFromDb == null) return Json(new { success = false, message = "Error while deleting." });
 
             _unitOfWork.Category.Delete(objFromDb);
 
             _unitOfWork.Save();
 
-            return Json(new {success = true, message = "Deleted successfully."});
+            return Json(new { success = true, message = "Deleted successfully." });
         }
 
         [HttpGet]
         public IActionResult Details(int id)
         {
-            return Json(new {data = _unitOfWork.Category.GetById(id)});
+            return Json(new { data = _unitOfWork.Category.GetById(id) });
         }
 
         #endregion API CALLS
