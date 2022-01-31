@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Elite.AppDbContext
 {
-    public partial class HotelContext : IdentityDbContext<ApplicationUser, IdentityRole, string> //DbContext
+    public partial class HotelContext : IdentityDbContext //DbContext
     {
         public HotelContext()
         {
