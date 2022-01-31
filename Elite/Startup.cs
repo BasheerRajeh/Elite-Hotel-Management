@@ -1,4 +1,5 @@
 using Elite.AppDbContext;
+using Elite.AppDbContext.Models;
 using Elite.DataAccess.Core;
 using Elite.DataAccess.Presistance;
 using Elite.Models;
@@ -37,11 +38,24 @@ namespace Elite
             services.AddDbContext<HotelContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<HotelContext>()
-                .AddDefaultTokenProviders();
+
+            /*            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                            .AddEntityFrameworkStores<HotelContext>()
+                            .AddDefaultTokenProviders();
+            */
+
+            services.AddDefaultIdentity<ApplicationUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<HotelContext>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             services.AddControllersWithViews().AddNewtonsoftJson().AddRazorRuntimeCompilation();
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -98,6 +112,8 @@ namespace Elite
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Elite.AppDbContext;
+using Elite.AppDbContext.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -34,6 +35,7 @@ namespace Elite.AppDbContext
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<ServiceCat> ServiceCat { get; set; }
         public virtual DbSet<SpecialService> SpecialService { get; set; }
+        public virtual DbSet<ApplicationUser> ApplicationUser { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
