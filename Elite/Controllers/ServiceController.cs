@@ -9,9 +9,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Elite.Controllers
 {
+    [Authorize]
     public class ServiceController : BaseController<Service>
     {
         private readonly IWebHostEnvironment _hostEnvironment;

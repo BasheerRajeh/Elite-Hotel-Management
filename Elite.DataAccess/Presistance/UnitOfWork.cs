@@ -40,6 +40,8 @@ namespace Elite.DataAccess.Presistance
             SpecialService = new SpecialServiceRepository(_db);
 
             ServiceCat = new ServiceCatRepository(_db);
+
+            User = new UserRepository(_db);
         }
 
         public ICategoryRepository Category { get; private set; }
@@ -67,6 +69,8 @@ namespace Elite.DataAccess.Presistance
         public ISpecialServiceRepository SpecialService { get; private set; }
 
         public IServiceCatRepository ServiceCat { get; private set; }
+
+        public IUserRepository User { get; private set; }
 
         public void Dispose()
         {

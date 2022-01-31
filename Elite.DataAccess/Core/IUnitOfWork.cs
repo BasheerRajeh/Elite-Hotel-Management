@@ -31,6 +31,8 @@ namespace Elite.DataAccess.Core
 
         IServiceCatRepository ServiceCat { get; }
 
+        IUserRepository User { get; }
+
         void Save();
     }
 }
