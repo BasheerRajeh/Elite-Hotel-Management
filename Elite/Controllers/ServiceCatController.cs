@@ -1,6 +1,7 @@
 ﻿using Elite.AppDbContext;
 using Elite.AppDbContext.ViewModels;
 using Elite.DataAccess.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 
 namespace Elite.Controllers
 {
+    [Authorize]
     public class ServiceCatController : BaseController<ServiceCat>
     {
         private readonly IWebHostEnvironment _hostEnvironment;

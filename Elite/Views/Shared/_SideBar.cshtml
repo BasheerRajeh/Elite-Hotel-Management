@@ -1,4 +1,7 @@
-﻿@inject Elite.Models.LanguageService language
+﻿@using Microsoft.AspNetCore.Identity
+@using Elite.AppDbContext.Models
+@inject Elite.Models.LanguageService language
+@inject SignInManager<ApplicationUser> SignInManager
 
 <div class="sidebar-wrapper active">
     <div class="sidebar-header">
@@ -67,6 +70,26 @@
                     <span>@language.Getkey("Dashboard")</span>
                 </a>
             </li>
+
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <!--User-->
+                <li class="sidebar-item has-sub">
+                    <a href="#" class="sidebar-link">
+                        <i class="fas fa-user"></i>
+                        <span>User</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item">
+                            <a asp-controller="User" asp-action="Index">@language.Getkey("Display All")</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a asp-page="/Account/Register">@language.Getkey("Add") @language.Getkey("User")</a>
+                        </li>
+                    </ul>
+                </li>
+
+            }
 
             <!--Hotel-->
             <li class="sidebar-item has-sub">

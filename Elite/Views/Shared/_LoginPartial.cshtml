@@ -14,18 +14,18 @@
             <div class="avatar avatar-lg">
                 <img src="~/assets/images/faces/2.jpg" />
             </div>
-            <div class="name ms-4">
-                <h5 class="mb-1">@User.Identity.Name</h5>
-                <h6 class="text-muted mb-0">@@@User.Identity.Name</h6>
+            <div class="name ms-2">
+                <h6 class="mb-1">@@@User.Identity.Name</h6>
             </div>
         </a>
         <ul class="submenu">
-            <li class="submenu-item">
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" class="sidebar-link">
-                    <i class="fas fa-user-edit"></i>
-                    <span>@language.Getkey("Profile")</span>
-                </a>
-            </li>
+            @*            <li class="submenu-item">
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" class="sidebar-link">
+                        <i class="fas fa-user-edit"></i>
+                        <span>@language.Getkey("Profile")</span>
+                    </a>
+                </li>
+            *@
             <li class="submenu-item">
 
                 <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

@@ -97,19 +97,9 @@ namespace Elite.Areas.Identity.Pages.Account
                         await _roleManager.CreateAsync(new IdentityRole(SD.Manager));
                     }
 
-                    string role = Request.Form["rdUserRole"].ToString();
+                    //string role = SD.Manager;
 
-                    if (role == SD.Admin)
-                    {
-                        await _userManager.AddToRoleAsync(user, SD.Admin);
-                    }
-                    else
-                    {
-                        if (role == SD.Manager)
-                        {
-                            await _userManager.AddToRoleAsync(user, SD.Manager);
-                        }
-                    }
+                    await _userManager.AddToRoleAsync(user, SD.Manager);
 
                     _logger.LogInformation("User created a new account with password.");
 

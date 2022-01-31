@@ -1,5 +1,6 @@
 ﻿using Elite.AppDbContext;
 using Elite.DataAccess.Core;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Elite.Controllers
 {
+    [Authorize]
     public class HotelController : BaseController<Hotel>
     {
         private readonly IWebHostEnvironment _hostEnvironment;
