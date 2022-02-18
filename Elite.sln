@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elite.AppDbContext", "Elite
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Elite.Utility", "Elite.Utility\Elite.Utility.csproj", "{371AE0FF-B699-4D79-A87A-212DD4531B0C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "DomainLayer\DomainLayer.csproj", "{D7A4E384-2B97-44A8-9B13-1346453E12DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elite Hotel", "Elite Hotel\Elite Hotel.csproj", "{26A6432F-8185-4502-AF0A-70DB328B5D39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{371AE0FF-B699-4D79-A87A-212DD4531B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{371AE0FF-B699-4D79-A87A-212DD4531B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{371AE0FF-B699-4D79-A87A-212DD4531B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7A4E384-2B97-44A8-9B13-1346453E12DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7A4E384-2B97-44A8-9B13-1346453E12DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7A4E384-2B97-44A8-9B13-1346453E12DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7A4E384-2B97-44A8-9B13-1346453E12DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26A6432F-8185-4502-AF0A-70DB328B5D39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26A6432F-8185-4502-AF0A-70DB328B5D39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26A6432F-8185-4502-AF0A-70DB328B5D39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26A6432F-8185-4502-AF0A-70DB328B5D39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
