@@ -11,22 +11,22 @@ namespace Elite.AppDbContext.Migrations
                 table: "AspNetUsers",
                 nullable: true);
 
-            migrationBuilder.AddColumn<string>(
+/*            migrationBuilder.AddColumn<string>(
                 name: "Discriminator",
                 table: "AspNetUsers",
                 nullable: false,
                 defaultValue: "");
-        }
+*/        }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
+/*            migrationBuilder.DropColumn(
                 name: "Name",
                 table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
+*/
+/*            migrationBuilder.DropColumn(
                 name: "Discriminator",
                 table: "AspNetUsers");
-        }
+*/        }
     }
 }
