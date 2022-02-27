@@ -18,7 +18,7 @@ namespace DomainLayer.BaseService
 
         public IUnitOfWork UnitOfWork { get; }
 
-        public Repo DbRepo { get; }
+        public abstract Repo DbRepo { get; }
 
         public IHttpContextAccessor HttpContextAccessor { get; }
 
@@ -30,7 +30,7 @@ namespace DomainLayer.BaseService
             }
         }
 
-        public Dto Create(Dto dto)
+        public virtual Dto Create(Dto dto)
         {
             DbEntity dbEntity = Mapper.Map<DbEntity>(dto);
             dbEntity = DbRepo.Insert(dbEntity);
@@ -38,7 +38,7 @@ namespace DomainLayer.BaseService
             return Mapper.Map<Dto>(dbEntity);
         }
 
-        public Dto Update(Dto dto)
+        public virtual Dto Update(Dto dto)
         {
             DbEntity dbEntity = Mapper.Map<DbEntity>(dto);
             dbEntity = DbRepo.Update(dbEntity);
