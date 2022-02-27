@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
-
 namespace Elite_Hotel.Controllers
 {
     public class HomeController : Controller
