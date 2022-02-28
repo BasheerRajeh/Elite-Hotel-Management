@@ -1,22 +1,33 @@
-﻿using Elite_Hotel.Models;
+﻿using DomainLayer.Pool;
+using Elite_Hotel.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.IO;
+
 namespace Elite_Hotel.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IServicePool _servicePool;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IServicePool servicePool)
         {
+           
             _logger = logger;
+            _servicePool = servicePool;
         }
+
+
 
         public IActionResult Index()
         {
-            return View();
+            var items = _servicePool.CategoryService.GetAll();   
+            return View(items);
         }
+
+
 
         public IActionResult Contact()
         {

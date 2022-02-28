@@ -5,27 +5,23 @@ using System.Text;
 
 namespace DomainLayer.Dtos
 {
-    public class CategoryDto
+    public class HotelDto
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Category Name")]
+        [Display(Name = "Hotel Name")]
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Max Capacity")]
-        public int MaxCap { get; set; }
+        [Display(Name = "City")]
+        public string City { get; set; }
 
-        [Required]
-        [Display(Name = "Price Per Night")]
-        public decimal PricePerNight { get; set; }
+        public bool? SoftDel { get; set; }
 
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Image")]
         public string ImageUrl { get; set; }
-
-
     }
 }

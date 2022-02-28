@@ -17,5 +17,13 @@ namespace Elite.DataAccess.Presistance.Repositories
         {
             _db = db;
         }
+        public IEnumerable<SelectListItem> GetCategoryForDropDown()
+        {
+            return _db.Category.Select(i => new SelectListItem()
+            {
+                Text = i.Name,
+                Value = i.Id.ToString(),
+            });
+        }
     }
 }

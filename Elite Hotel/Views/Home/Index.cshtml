@@ -1,6 +1,4 @@
-﻿
-
-
+﻿@model List<DomainLayer.Dtos.CategoryDto>
 <!-- Start Banner Hero -->
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
@@ -60,6 +58,7 @@
                             <h1 class="h1">Pet-Friendly Stays</h1>
                             <h3 class="h2">Pets are part of the family </h3>
                             <p>
+
                                 Instead of leaving your furry friends home,
                                 bring them along to one of our pet-friendly hotels.
                                 Travel is more fun when everyone
@@ -84,28 +83,22 @@
 <section class="container py-5">
     <div class="row text-center pt-3">
         <div class="col-lg-6 m-auto">
-            <h1 class="h1">Categories of The Month</h1>
+            <h1 class="h1">Categories of The Mounth</h1>
             <p>
                 The Most categories hits of this mounth
             </p>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/assets/img/category_img_01.jpg" class="rounded-circle img-fluid border"></a>
-            <h5 class="text-center mt-3 mb-3">Watches</h5>
-            <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/assets/img/category_img_02.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Shoes</h2>
-            <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-        </div>
-        <div class="col-12 col-md-4 p-5 mt-3">
-            <a href="#"><img src="~/assets/img/category_img_03.jpg" class="rounded-circle img-fluid border"></a>
-            <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
-            <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
-        </div>
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="@Model[i].ImageUrl" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">@Model[i].Name</h5>
+                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+            </div>
+        }
+
     </div>
 </section>
 <!-- End Categories of The Month -->

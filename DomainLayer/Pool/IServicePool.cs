@@ -8,5 +8,6 @@ namespace DomainLayer.Pool
     public interface IServicePool
     {
         public CategoryService CategoryService { get; }
+        public HotelService HotelService { get; }
     }
 }
