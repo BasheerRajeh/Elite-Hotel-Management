@@ -32,14 +32,10 @@ namespace DomainLayer.AppServices
             return base.Update(dto);
         }
 
-        public List<HotelDto> GetAll(Expression<Func<Category, bool>> condition = null)
+        public List<HotelDto> GetAll(Expression<Func<Hotel, bool>> condition = null)
         {
             return Mapper.Map<List<HotelDto>>(DbRepo.GetAll(condition));
         }
 
-        public void TestMethod()
-        {
-            GetAll();
-        }
     }
 }

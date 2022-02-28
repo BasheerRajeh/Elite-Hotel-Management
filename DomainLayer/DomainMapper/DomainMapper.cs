@@ -9,6 +9,10 @@ namespace DomainLayer.DomainMapper
         public DomainMapper()
         {
             CreateMap<Category, CategoryDto>();
+            CreateMap<Hotel, HotelDto>();
+            CreateMap<ServiceCat, ServicecatDto>();
+            CreateMap<Reservation, ReservationDto>();
+            CreateMap<Service, ServiceDto>();
         }
     }
 }

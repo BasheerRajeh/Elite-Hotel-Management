@@ -10,7 +10,7 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface IHotelRepository : IRepository<Hotel>
     {
-        IEnumerable<SelectListItem> GetCategoryForDropDown();
-        object GetAll(Expression<Func<Category, bool>> condition);
+        IEnumerable<SelectListItem> GetHotelForDropDown();
+
     }
 }

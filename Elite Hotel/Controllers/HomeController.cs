@@ -23,7 +23,11 @@ namespace Elite_Hotel.Controllers
 
         public IActionResult Index()
         {
-            var items = _servicePool.CategoryService.GetAll();   
+
+            ViewModel items = new ViewModel();
+            items.Categories = _servicePool.CategoryService.GetAll();
+            items.hotels = _servicePool.HotelService.GetAll();
+            items.Servicecats = _servicePool.ServiceCatService.GetAll();
             return View(items);
         }
 

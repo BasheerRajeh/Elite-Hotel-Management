@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Elite.DataAccess.Presistance.Repositories
 {
-    public class HotelRepository : Repository<Hotel>, IHotelRepository
+    public class HotelRepository : Repository<Hotel> , IHotelRepository
     {
         private readonly HotelContext _db;
 
@@ -17,7 +17,8 @@ namespace Elite.DataAccess.Presistance.Repositories
         {
             _db = db;
         }
-        public IEnumerable<SelectListItem> GetCategoryForDropDown()
+
+        public IEnumerable<SelectListItem> GetHotelForDropDown()
         {
             return _db.Category.Select(i => new SelectListItem()
             {

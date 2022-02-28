@@ -1,4 +1,8 @@
-﻿@model List<DomainLayer.Dtos.CategoryDto>
+﻿@using Elite_Hotel.Controllers
+@model ViewModel
+
+
+
 <!-- Start Banner Hero -->
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
@@ -11,7 +15,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="~/assets/img/homeimage1.jpg" alt="">
+                        <img class="img-fluid" src="@Model.hotels[0].ImageUrl" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left align-self-center">
@@ -31,7 +35,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="~/assets/img/homeimage2.jpg" alt="">
+                        <img class="img-fluid" src="@Model.hotels[1].ImageUrl" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -51,7 +55,7 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="~/assets/img/honeimage3.jpg" alt="">
+                        <img class="img-fluid" src="@Model.hotels[2].ImageUrl" alt="">
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -93,9 +97,9 @@
         @for (int i = 0; i < 3; i++)
         {
             <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="@Model[i].ImageUrl" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">@Model[i].Name</h5>
-                <p class="text-center"><a class="btn btn-success">Go Shop</a></p>
+                <a href="#"><img src="@Model.Categories[i].ImageUrl" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">@Model.Categories[i].Name</h5>
+                <p class="text-center"><a class="btn btn-success">Go Reservation</a></p>
             </div>
         }
 
@@ -107,10 +111,9 @@
     <div class="container py-5">
         <div class="row text-center py-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Featured Product</h1>
+                <h1 class="h1">Service Category</h1>
                 <p>
-                    Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident.
+                    Enjoy the <strong>latest</strong> types of services in our hotel
                 </p>
             </div>
         </div>
@@ -118,7 +121,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="~/assets/img/feature_prod_01.jpg" class="card-img-top" alt="...">
+                        <img src="/images/serviceCat/054cf135-6535-4213-bd02-664f0214c9fd.jpg" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -129,11 +132,11 @@
                                 <i class="text-muted fa fa-star"></i>
                                 <i class="text-muted fa fa-star"></i>
                             </li>
-                            <li class="text-muted text-right">$240.00</li>
+                            <li class="text-muted text-right">4.00$</li>
                         </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Gym Weight</a>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Basic Service </a>
                         <p class="card-text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia deserunt.
+                            Include Clean ,Food ....
                         </p>
                         <p class="text-muted">Reviews (24)</p>
                     </div>
@@ -142,7 +145,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="~/assets/img/feature_prod_02.jpg" class="card-img-top" alt="...">
+                        <img src="~/images/serviceCat/065e8742-b2e2-4f65-b993-1e31413ba3bb.jpg" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -153,11 +156,11 @@
                                 <i class="text-muted fa fa-star"></i>
                                 <i class="text-muted fa fa-star"></i>
                             </li>
-                            <li class="text-muted text-right">$480.00</li>
+                            <li class="text-muted text-right">$8.00</li>
                         </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Transport</a>
                         <p class="card-text">
-                            Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
+                            give you a ride from any where you want
                         </p>
                         <p class="text-muted">Reviews (48)</p>
                     </div>
@@ -166,7 +169,7 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="~/assets/img/feature_prod_03.jpg" class="card-img-top" alt="...">
+                        <img src="~/images/serviceCat/7035bb44-c83a-4da2-9126-95cf16f777c8.jpg" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -179,9 +182,9 @@
                             </li>
                             <li class="text-muted text-right">$360.00</li>
                         </ul>
-                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
+                        <a href="shop-single.html" class="h2 text-decoration-none text-dark">Food</a>
                         <p class="card-text">
-                            Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
+                            Enjoy the most delicious international dishes in our restaurant.
                         </p>
                         <p class="text-muted">Reviews (74)</p>
                     </div>

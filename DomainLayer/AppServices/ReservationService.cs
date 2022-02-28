@@ -10,31 +10,31 @@ using System.Text;
 
 namespace DomainLayer.AppServices
 {
-    public class ServiceService : BaseService.BaseService<
-        ServiceDto, IServiceRepository, Service>
+    public class ReservationService : BaseService.BaseService<
+        ReservationDto, IReservationRepository, Reservation>
     {
-        public ServiceService(IUnitOfWork unitOfWork,
+        public ReservationService(IUnitOfWork unitOfWork,
             IHttpContextAccessor httpContextAccessor) : base(unitOfWork,
                 httpContextAccessor)
         {
 
         }
 
-        public override IServiceRepository DbRepo => UnitOfWork.Service;
+        public override IReservationRepository DbRepo => UnitOfWork.Reservation;
 
-        public override ServiceDto Create(ServiceDto dto)
+        public override ReservationDto Create(ReservationDto dto)
         {
             return base.Create(dto);
         }
 
-        public override ServiceDto Update(ServiceDto dto)
+        public override ReservationDto Update(ReservationDto dto)
         {
             return base.Update(dto);
         }
 
-        public List<ServiceDto> GetAll(Expression<Func<Service, bool>> condition = null)
+        public List<ReservationDto> GetAll(Expression<Func<Reservation, bool>> condition = null)
         {
-            return Mapper.Map<List<ServiceDto>>(DbRepo.GetAll(condition));
+            return Mapper.Map<List<ReservationDto>>(DbRepo.GetAll(condition));
         }
 
         public void TestMethod()

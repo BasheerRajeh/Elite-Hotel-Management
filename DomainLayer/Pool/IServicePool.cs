@@ -9,5 +9,9 @@ namespace DomainLayer.Pool
     {
         public CategoryService CategoryService { get; }
         public HotelService HotelService { get; }
+        public ReservationService ReservationService { get; }
+        public ServiceService ServiceService { get; }
+        public ServiceCatService ServiceCatService { get; }
+
     }
 }

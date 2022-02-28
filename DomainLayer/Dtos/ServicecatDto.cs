@@ -5,17 +5,18 @@ using System.Text;
 
 namespace DomainLayer.Dtos
 {
-    public class ServiceDto
+    public class ServicecatDto
     {
         [Key]
         public int Id { get; set; }
 
         [Required]
-        [Display(Name = "Service Name")]
+        [Display(Name = "Service Category")]
         public string Name { get; set; }
 
         [Required]
-        public decimal Price { get; set; }
+        [Display(Name = "Category")]
+        public int CategoryId { get; set; }
 
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Image")]

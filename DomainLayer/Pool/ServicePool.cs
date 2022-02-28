@@ -13,12 +13,18 @@ namespace DomainLayer.Pool
 
         public CategoryService CategoryService { get; }
         public HotelService HotelService { get; }
+        public ReservationService ReservationService { get; }
+        public ServiceService ServiceService { get; }
+        public ServiceCatService ServiceCatService { get; }
         public ServicePool(IUnitOfWork unitOfWork,
             IHttpContextAccessor httpContextAccessor,
             IConfiguration configuration)
         {
             CategoryService = new CategoryService(unitOfWork, httpContextAccessor);
-            HotelService = new HotelService(unitOfWork,httpContextAccessor)
+            HotelService = new HotelService(unitOfWork, httpContextAccessor);
+            ReservationService = new ReservationService(unitOfWork, httpContextAccessor);
+            ServiceService = new ServiceService(unitOfWork, httpContextAccessor);
+            ServiceCatService = new ServiceCatService(unitOfWork, httpContextAccessor);
         }
     }
 }
