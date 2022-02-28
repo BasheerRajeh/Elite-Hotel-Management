@@ -35,6 +35,7 @@ namespace Elite_Hotel.Controllers
 
         public IActionResult Contact()
         {
+
             return View();
         }
 
