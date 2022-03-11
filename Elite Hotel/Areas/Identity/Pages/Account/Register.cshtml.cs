@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
-namespace Elite.Areas.Identity.Pages.Account
+namespace Elite_Hotel.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class RegisterModel : PageModel
@@ -33,6 +33,7 @@ namespace Elite.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             RoleManager<IdentityRole> roleManager)
+
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -79,11 +80,12 @@ namespace Elite.Areas.Identity.Pages.Account
         {
             returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
-                    UserName = Input.Name,
+                    UserName = Input.Email,
                     Email = Input.Email,
                     Name = Input.Name
                 };
@@ -91,15 +93,14 @@ namespace Elite.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    if (!await _roleManager.RoleExistsAsync(SD.Admin))
+                    if (!await _roleManager.RoleExistsAsync(SD.Client))
                     {
                         await _roleManager.CreateAsync(new IdentityRole(SD.Admin));
                         await _roleManager.CreateAsync(new IdentityRole(SD.Manager));
+                        await _roleManager.CreateAsync(new IdentityRole(SD.Client));
                     }
 
-                    //string role = SD.Manager;
-
-                    await _userManager.AddToRoleAsync(user, SD.Manager);
+                    await _userManager.AddToRoleAsync(user, SD.Client);
 
                     _logger.LogInformation("User created a new account with password.");
 

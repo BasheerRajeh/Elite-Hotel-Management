@@ -2,13 +2,14 @@
 using System.IO;
 using Elite.AppDbContext;
 using Elite.DataAccess.Core;
+using Elite.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Elite.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = SD.Manager + "," + SD.Admin)]
     public class CategoryController : BaseController<Category>
     {
         private readonly IWebHostEnvironment _hostEnvironment;
