@@ -83,7 +83,7 @@ namespace Elite.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser
                 {
-                    UserName = Input.Email,
+                    UserName = Input.Name,
                     Email = Input.Email,
                     Name = Input.Name
                 };

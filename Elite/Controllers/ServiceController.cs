@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Elite.Utility;
 
 namespace Elite.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = SD.Manager + "," + SD.Admin)]
     public class ServiceController : BaseController<Service>
     {
         private readonly IWebHostEnvironment _hostEnvironment;
