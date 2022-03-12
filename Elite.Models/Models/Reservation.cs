@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Elite.AppDbContext.Models;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled. If
 // you have enabled NRTs for your project, then un-comment the following line: #nullable disable
@@ -28,7 +29,7 @@ namespace Elite.AppDbContext
 
         [Required]
         [Display(Name = "Customer")]
-        public string CustomerId { get; set; }
+        public string UserId { get; set; }
 
         [Required]
         [Display(Name = "Room")]
@@ -47,6 +48,7 @@ namespace Elite.AppDbContext
         public bool? SoftDel { get; set; }
 
         public virtual Room Room { get; set; }
+        public virtual ApplicationUser User { get; set; }
         public virtual ICollection<Order> Order { get; set; }
         public virtual ICollection<SpecialService> SpecialService { get; set; }
     }
