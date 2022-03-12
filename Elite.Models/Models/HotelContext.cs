@@ -151,7 +151,7 @@ namespace Elite.AppDbContext
 
                 entity.Property(e => e.Checkout).HasColumnType("decimal(19, 4)");
 
-                entity.Property(e => e.CustomerId)
+                entity.Property(e => e.UserId)
                     .IsRequired()
                     .HasMaxLength(450);
 
