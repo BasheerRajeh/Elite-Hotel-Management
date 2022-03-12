@@ -5,11 +5,10 @@
     <projectFile>Elite Hotel/Elite Hotel.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Elite/Controllers/ReservationController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Elite/Views/Reservation/Index.cshtml" afterDir="false" />
+    <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="changes">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.Models/Models/Reservation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Models/Models/Reservation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elite.Models/Migrations/HotelContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Models/Migrations/HotelContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elite.Models/Models/HotelContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Models/Models/HotelContext.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647012977541</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="changes">
+      <created>1647044823289</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1647044823289</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,7 +194,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="ClientLogin" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -204,6 +210,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="change all IdentityUser to ApplicationUser" />
-    <option name="LAST_COMMIT_MESSAGE" value="change all IdentityUser to ApplicationUser" />
+    <MESSAGE value="changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes" />
   </component>
 </project>
