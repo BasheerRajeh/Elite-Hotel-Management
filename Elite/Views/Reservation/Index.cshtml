@@ -1,0 +1,60 @@
+﻿
+@model IEnumerable<Elite.AppDbContext.Reservation>
+@inject Elite.Models.LanguageService language
+
+@{
+    ViewData["Title"] = "Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section Styls{
+
+    <link rel="stylesheet" href="~/assets/vendors/jquery-datatables/jquery.dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="~/assets/vendors/fontawesome/all.min.css">
+    <style>
+        table.dataTable td {
+            padding: 15px 8px;
+        }
+
+        .fontawesome-icons .the-icon svg {
+            font-size: 24px;
+        }
+    </style>
+
+}
+
+
+@*
+<section class="section">
+    <div class="card">
+        <div class="card-header">
+            <a class="btn btn-primary rounded-pill" asp-action="Upsert">@language.Getkey("Create New")</a>
+        </div>
+        <div class="card-body">
+            <table class="table" id="tblData">
+                <thead>
+                    <tr>
+                        <th>
+                            @language.Getkey(@Html.DisplayNameFor(model => model.Name))
+                        </th>
+                        <th>
+                            @language.Getkey(@Html.DisplayNameFor(model => model.MaxCap))
+                        </th>
+                        <th>
+                            @language.Getkey(@Html.DisplayNameFor(model => model.PricePerNight))
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</section>
+*@
+
+
+
+
+
+<h2>title</h2>
