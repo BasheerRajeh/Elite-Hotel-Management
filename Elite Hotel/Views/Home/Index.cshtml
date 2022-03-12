@@ -1,8 +1,6 @@
 ﻿@using Elite_Hotel.Controllers
 @model ViewModel
 
-
-
 <!-- Start Banner Hero -->
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
@@ -15,7 +13,8 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="@Model.hotels[0].ImageUrl" alt="">
+                        @*                        <img class="img-fluid" src="@Model.hotels[0].ImageUrl" alt="">
+                        *@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left align-self-center">
@@ -35,7 +34,8 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="@Model.hotels[1].ImageUrl" alt="">
+                        @*                        <img class="img-fluid" src="@Model.hotels[1].ImageUrl" alt="">
+                        *@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -55,7 +55,8 @@
             <div class="container">
                 <div class="row p-5">
                     <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                        <img class="img-fluid" src="@Model.hotels[2].ImageUrl" alt="">
+                        @*                        <img class="img-fluid" src="@Model.hotels[2].ImageUrl" alt="">
+                        *@
                     </div>
                     <div class="col-lg-6 mb-0 d-flex align-items-center">
                         <div class="text-align-left">
@@ -99,10 +100,9 @@
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="@Model.Categories[i].ImageUrl" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3">@Model.Categories[i].Name</h5>
-                <p class="text-center"><a class="btn btn-success" href ="Category/Showcat/@Model.Categories[i].Id">Go Reservation</a></p>
+                <p class="text-center"><a class="btn btn-success" href="Category/Showcat/@Model.Categories[i].Id">Go Reservation</a></p>
             </div>
         }
-
     </div>
 </section>
 <!-- End Categories of The Month -->
