@@ -5,16 +5,11 @@
     <projectFile>Elite Hotel/Elite Hotel.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="ignore this commit workspace">
-      <change afterPath="$PROJECT_DIR$/Elite/wwwroot/js/reservation.js" afterDir="false" />
+    <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="adding served and reject in reservation repository and finish index without details">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.DataAccess/Core/IRepositories/IReservationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.DataAccess/Core/IRepositories/IReservationRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.DataAccess/Presistance/Repositories/ReservationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.DataAccess/Presistance/Repositories/ReservationRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.DataAccess/Presistance/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.DataAccess/Presistance/Repositories/UserRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.Models/Models/Reservation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Models/Models/Reservation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.Utility/SD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Utility/SD.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Elite/Controllers/ReservationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite/Controllers/ReservationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Elite/Views/Reservation/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Elite/Views/Reservation/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elite/wwwroot/js/reservation.js" beforeDir="false" afterPath="$PROJECT_DIR$/Elite/wwwroot/js/reservation.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +41,7 @@
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Basheer/source/repos/Elite/Elite.Models/Migrations/HotelContextModelSnapshot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Basheer/source/repos/Elite/Elite.Utility/SD.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Basheer/source/repos/Elite/Elite/Views/Reservation/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -83,13 +79,13 @@
       <option value="$PROJECT_DIR$/Elite/Pages/Reservation/Index.cshtml" />
       <option value="$PROJECT_DIR$/DomainLayer/Dtos/ReservationDto.cs" />
       <option value="$PROJECT_DIR$/Elite.Models/Models/Reservation.cs" />
-      <option value="$PROJECT_DIR$/Elite/wwwroot/js/reservation.js" />
       <option value="$PROJECT_DIR$/Elite.Utility/SD.cs" />
       <option value="$PROJECT_DIR$/Elite.DataAccess/Presistance/Repositories/ReservationRepository.cs" />
       <option value="$PROJECT_DIR$/Elite.DataAccess/Presistance/Repositories/UserRepository.cs" />
-      <option value="$PROJECT_DIR$/Elite/Controllers/ReservationController.cs" />
       <option value="$PROJECT_DIR$/Elite.DataAccess/Core/IRepositories/IReservationRepository.cs" />
+      <option value="$PROJECT_DIR$/Elite/Controllers/ReservationController.cs" />
       <option value="$PROJECT_DIR$/Elite/Views/Reservation/Index.cshtml" />
+      <option value="$PROJECT_DIR$/Elite/wwwroot/js/reservation.js" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="24GqRj2NnDqMIYNkNpNQacDzi18" />
@@ -217,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647048392875</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="adding served and reject in reservation repository and finish index without details">
+      <created>1647086989049</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1647086989049</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,27 +264,7 @@
     <MESSAGE value="change on HotelContext.cs" />
     <MESSAGE value="adding room status" />
     <MESSAGE value="ignore this commit workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="ignore this commit workspace" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="NONE" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Elite/Views/User/Index.cshtml</url>
-          <line>81</line>
-          <log-expression expression="&lt;section class=&quot;section&quot;&gt;&#10;    &lt;div class=&quot;card&quot;&gt;&#10;        &lt;div class=&quot;card-header&quot;&gt;&#10;            &lt;a class=&quot;btn btn-primary rounded-pill&quot; asp-page=&quot;/Account/Register&quot;&gt;@language.Getkey(&quot;Create New&quot;)&lt;/a&gt;&#10;        &lt;/div&gt;&#10;        &lt;div class=&quot;card-body&quot;&gt;&#10;            &lt;table class=&quot;table&quot; id=&quot;table1&quot;&gt;&#10;                &lt;thead&gt;&#10;" language="Razor" />
-          <properties documentPath="C:\Users\Basheer\source\repos\Elite\Elite\Views\User\Index.cshtml" initialLine="81" isMultiMethodBreakpoint="true">
-            <option name="multiMethodBreakpoint" value="true" />
-            <startOffsets>
-              <option value="-1" />
-            </startOffsets>
-            <endOffsets>
-              <option value="-1" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="adding served and reject in reservation repository and finish index without details" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding served and reject in reservation repository and finish index without details" />
   </component>
 </project>

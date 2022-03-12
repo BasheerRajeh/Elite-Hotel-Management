@@ -40,6 +40,7 @@
                         @language.Getkey(@Html.DisplayNameFor(model => model.Checkout))
                     </th>
                     <th></th>
+                    <th></th>
                 </tr>
                 </thead>
 
@@ -53,6 +54,15 @@
                             <td>@Html.DisplayFor(m => item.User.Name)</td>
                             <td>@Html.DisplayFor(m => item.RequestDate)</td>
                             <td>@Html.DisplayFor(m => item.Checkout)</td>
+                            <td>
+                                @{
+                                    string detailLink = $"\"/Reservation/Details/{item.Id}\"";
+                                }
+                                <a id="btnInfo" onclick=Info(@detailLink) data-bs-toggle="modal"
+                                   data-bs-target="#exampleModalScrollable" class='btn btn-sm btn-info text-dark' style='cursor: pointer; width: 80px;'>
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                            </td>
                             <td>
                                 @if (item.RequestStatusId == SD.Pending)
                                 {
@@ -87,6 +97,86 @@
 </section>
 
 
+<div id=popup>
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+
+            <div class="modal-content">
+                <div class="card">
+                    <div class="card-content">
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+
+                                        <div class="form-group row align-items-center">
+                                            <div class="col-lg-4 col-3">
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.ReservationNum))
+                                            </div>
+                                            <div class="col-lg-8 col-9">
+                                                <input value="undefiend" class="form-control" id="res_num" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row align-items-center">
+                                            <div class="col-lg-4 col-3">
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.User.Name))
+                                            </div>
+                                            <div class="col-lg-8 col-9">
+                                                <input value="text" class="form-control" id="user_name" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row align-items-center">
+                                            <div class="col-lg-4 col-3">
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.StartDate))
+                                            </div>
+                                            <div class="col-lg-8 col-9">
+                                                <input value="date" class="form-control" id="start_date" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row align-items-center">
+                                            <div class="col-lg-4 col-3">
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.EndDate))
+                                            </div>
+                                            <div class="col-lg-8 col-9">
+                                                <input value="date" class="form-control" id="end_date" disabled>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group row align-items-center">
+                                            <div class="col-lg-4 col-3">
+                                                @language.Getkey(@Html.DisplayNameFor(model => model.Checkout))
+                                            </div>
+                                            <div class="col-lg-8 col-9">
+                                                <input value="date" class="form-control" id="checkout" disabled>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">@language.Getkey("Close")</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 @section scripts{
 
     <script src="~/assets/vendors/jquery/jquery.min.js"></script>
@@ -97,4 +187,6 @@
         // Jquery Datatable
         let jquery_datatable = $("#table1").DataTable()
     </script>
+    
+    <script src="~/js/reservation.js"></script>
 }

@@ -45,3 +45,25 @@ function loadDataTable() {
     });
 }
 */
+
+
+
+function Info(url) {
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: "json",
+        cache: false,
+        success: function (data) {
+            $("#res_num").val(data.data.reservationNum);
+
+            $('#user_name').val(data.data.user.name);
+
+            $('#start_date').val(data.data.startDate);
+
+            $('#end_date').val(data.data.endDate);
+
+            $('#checkout').val(data.data.checkout);
+        }
+    });
+}
