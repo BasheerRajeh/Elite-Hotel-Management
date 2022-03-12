@@ -5,10 +5,8 @@
     <projectFile>Elite Hotel/Elite Hotel.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="changes">
+    <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="change on HotelContext.cs">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.Models/Migrations/HotelContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Models/Migrations/HotelContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.Models/Models/HotelContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Models/Models/HotelContext.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +23,11 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/Basheer/source/repos/Elite/Elite.Models/Models/HotelContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Basheer/source/repos/Elite/Elite.Models/Migrations/HotelContextModelSnapshot.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Basheer/source/repos/Elite/Elite.Models/Migrations/HotelContextModelSnapshot.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -170,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647044823289</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="change on HotelContext.cs">
+      <created>1647045342487</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1647045342488</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +221,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="change all IdentityUser to ApplicationUser" />
     <MESSAGE value="changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes" />
+    <MESSAGE value="change on HotelContext.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="change on HotelContext.cs" />
   </component>
 </project>
