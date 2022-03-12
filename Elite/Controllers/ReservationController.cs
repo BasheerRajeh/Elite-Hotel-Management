@@ -1,11 +1,13 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Elite.AppDbContext;
 using Elite.DataAccess.Core;
 using Elite.Utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Elite.Controllers
 {
@@ -18,7 +20,10 @@ namespace Elite.Controllers
 
         public IActionResult Index()
         {
-            return View();
+
+            var reservations = _unitOfWork.Reservation.GetAll().AsEnumerable();
+            
+            return View(reservations);
         }
 
         /*
@@ -113,7 +118,7 @@ namespace Elite.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Json(new { data = _unitOfWork.Reservation.GetAll() });
+            return Json(new { data = _unitOfWork.Reservation.GetAll().Include("ApplicationUser") });
         }
 
         /*
@@ -148,5 +153,17 @@ namespace Elite.Controllers
         }
 
         #endregion API CALLS
+
+        public IActionResult Reject(int id)
+        {
+            _unitOfWork.Reservation.Reject(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Accept(int id)
+        {
+            _unitOfWork.Reservation.Serve(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

@@ -9,5 +9,7 @@ namespace Elite.DataAccess.Core.IRepositories
 {
     public interface IReservationRepository : IRepository<Reservation>
     {
+        void Reject(int id);
+        void Serve(int id);
     }
 }

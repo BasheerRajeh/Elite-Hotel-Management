@@ -1,12 +1,7 @@
-﻿
+﻿@using Elite.Utility
 @model IEnumerable<Elite.AppDbContext.Reservation>
 @inject Elite.Models.LanguageService language
 
-@{
-    ViewData["Title"] = "Reservation";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
-}
 
 @section Styls{
 
@@ -25,36 +20,81 @@
 }
 
 
-@*
 <section class="section">
     <div class="card">
-        <div class="card-header">
-            <a class="btn btn-primary rounded-pill" asp-action="Upsert">@language.Getkey("Create New")</a>
-        </div>
         <div class="card-body">
-            <table class="table" id="tblData">
+            <table class="table" id="table1">
                 <thead>
-                    <tr>
-                        <th>
-                            @language.Getkey(@Html.DisplayNameFor(model => model.Name))
-                        </th>
-                        <th>
-                            @language.Getkey(@Html.DisplayNameFor(model => model.MaxCap))
-                        </th>
-                        <th>
-                            @language.Getkey(@Html.DisplayNameFor(model => model.PricePerNight))
-                        </th>
-                        <th></th>
-                    </tr>
+                <tr>
+
+                    <th>
+                        @language.Getkey(@Html.DisplayNameFor(model => model.ReservationNum))
+                    </th>
+                    <th>
+                        @language.Getkey(@Html.DisplayNameFor(model => model.User.Name))
+                    </th>
+                    <th>
+                        @language.Getkey(@Html.DisplayNameFor(model => model.RequestDate))
+                    </th>
+                    <th>
+                        @language.Getkey(@Html.DisplayNameFor(model => model.Checkout))
+                    </th>
+                    <th></th>
+                </tr>
                 </thead>
+
+                <tbody>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => item.ReservationNum)</td>
+                            <td>@Html.DisplayFor(m => item.User.Name)</td>
+                            <td>@Html.DisplayFor(m => item.RequestDate)</td>
+                            <td>@Html.DisplayFor(m => item.Checkout)</td>
+                            <td>
+                                @if (item.RequestStatusId == SD.Pending)
+                                {
+                                    <a class="btn btn-primary" asp-action="Accept" asp-route-id="@item.Id">
+                                        Accept
+                                    </a>
+
+                                    <a class="btn btn-danger" asp-action="Reject" asp-route-id="@item.Id">
+                                        Reject
+                                    </a>
+                                }
+                                else if (item.RequestStatusId == SD.Served)
+                                {
+                                    <a href="#" class="badge bg-success">Served</a>
+                                }
+                                else
+                                {
+                                    <a href="#" class="badge bg-danger">Rejected</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>No User Exist...</tr>
+                }
+                </tbody>
             </table>
         </div>
     </div>
 </section>
-*@
 
 
+@section scripts{
 
+    <script src="~/assets/vendors/jquery/jquery.min.js"></script>
+    <script src="~/assets/vendors/jquery-datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/vendors/jquery-datatables/custom.jquery.dataTables.bootstrap5.min.js"></script>
 
-
-<h2>title</h2>
+    <script>
+        // Jquery Datatable
+        let jquery_datatable = $("#table1").DataTable()
+    </script>
+}

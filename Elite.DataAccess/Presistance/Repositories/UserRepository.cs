@@ -23,14 +23,14 @@ namespace Elite.DataAccess.Presistance.Repositories
         public void LockUser(string userId)
         {
             var userFromDb = _db.ApplicationUser.FirstOrDefault(u => u.Id == userId);
-            userFromDb.LockoutEnd = DateTime.Now.AddYears(100);
+            if (userFromDb != null) userFromDb.LockoutEnd = DateTime.Now.AddYears(100);
             _db.SaveChanges();
         }
 
         public void UnLockUser(string userId)
         {
             var userFromDb = _db.ApplicationUser.FirstOrDefault(u => u.Id == userId);
-            userFromDb.LockoutEnd = DateTime.Now;
+            if (userFromDb != null) userFromDb.LockoutEnd = DateTime.Now;
             _db.SaveChanges();
         }
     }

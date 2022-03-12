@@ -16,33 +16,28 @@ namespace Elite.AppDbContext
             SpecialService = new HashSet<SpecialService>();
         }
 
-        [Key]
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
 
         [Required]
         [Display(Name = "Reservation Number")]
         public string ReservationNum { get; set; }
 
-        [Required]
-        [Display(Name = "Status")]
+        [Required] [Display(Name = "Status")] 
         public int RequestStatusId { get; set; }
 
         [Required]
         [Display(Name = "Customer")]
         public string UserId { get; set; }
 
-        [Required]
-        [Display(Name = "Room")]
+        [Required] 
+        [Display(Name = "Room")] 
         public int RoomId { get; set; }
 
-        [Required]
-        public decimal Checkout { get; set; }
+        [Required] public decimal Checkout { get; set; }
 
-        [Required]
-        public DateTime RequestDate { get; set; }
+        [Required] public DateTime RequestDate { get; set; }
 
-        [Required]
-        public DateTime StartDate { get; set; }
+        [Required] public DateTime StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
         public bool? SoftDel { get; set; }
