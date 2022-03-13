@@ -8,7 +8,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.Utility/SD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Utility/SD.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +216,7 @@
       <workItem from="1647034529176" duration="7469000" />
       <workItem from="1647099282320" duration="2511000" />
       <workItem from="1647101883572" duration="1482000" />
+      <workItem from="1647171953529" duration="652000" />
     </task>
     <task id="LOCAL-00001" summary="change all IdentityUser to ApplicationUser">
       <created>1647012977541</created>
@@ -298,7 +298,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/WeatherService" />
                       </list>
                     </value>
                   </entry>
