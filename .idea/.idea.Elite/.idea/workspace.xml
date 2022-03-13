@@ -8,7 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elite.Utility/SD.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.Utility/SD.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +72,6 @@
       <option value="$PROJECT_DIR$/Elite/Pages/Reservation/Index.cshtml" />
       <option value="$PROJECT_DIR$/DomainLayer/Dtos/ReservationDto.cs" />
       <option value="$PROJECT_DIR$/Elite.Models/Models/Reservation.cs" />
-      <option value="$PROJECT_DIR$/Elite.Utility/SD.cs" />
       <option value="$PROJECT_DIR$/Elite.DataAccess/Presistance/Repositories/ReservationRepository.cs" />
       <option value="$PROJECT_DIR$/Elite.DataAccess/Presistance/Repositories/UserRepository.cs" />
       <option value="$PROJECT_DIR$/Elite.DataAccess/Core/IRepositories/IReservationRepository.cs" />
@@ -84,6 +83,7 @@
       <option value="$PROJECT_DIR$/WeatherService/Web.config" />
       <option value="$PROJECT_DIR$/WeatherService/IWeatherService.cs" />
       <option value="$PROJECT_DIR$/WeatherService/WeatherService.svc.cs" />
+      <option value="$PROJECT_DIR$/Elite.Utility/SD.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="24GqRj2NnDqMIYNkNpNQacDzi18" />
@@ -216,7 +216,7 @@
       <workItem from="1647011296065" duration="4597000" />
       <workItem from="1647034529176" duration="7469000" />
       <workItem from="1647099282320" duration="2511000" />
-      <workItem from="1647101883572" duration="694000" />
+      <workItem from="1647101883572" duration="1482000" />
     </task>
     <task id="LOCAL-00001" summary="change all IdentityUser to ApplicationUser">
       <created>1647012977541</created>
@@ -267,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647089945013</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="adding Weather service">
+      <created>1647102687486</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1647102687486</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,7 +320,8 @@
     <MESSAGE value="ignore this commit workspace" />
     <MESSAGE value="adding served and reject in reservation repository and finish index without details" />
     <MESSAGE value="finishing reservation from admin" />
-    <option name="LAST_COMMIT_MESSAGE" value="finishing reservation from admin" />
+    <MESSAGE value="adding Weather service" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding Weather service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
