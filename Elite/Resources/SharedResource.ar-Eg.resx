@@ -225,6 +225,9 @@
   <data name="Register" xml:space="preserve">
     <value>إنشاء حساب</value>
   </data>
+  <data name="Reservation" xml:space="preserve">
+    <value>الحجوزات</value>
+  </data>
   <data name="Service" xml:space="preserve">
     <value>الخدمات</value>
   </data>

@@ -37,30 +37,30 @@
             <!--Profile-->
             <!--<li class="sidebar-item has-sub">
 
-                <a href="#" class="sidebar-link">
-                    <div class="avatar avatar-lg">
-                        <img src="~/assets/images/faces/2.jpg" />
-                    </div>
-                    <div class="name ms-4">
-                        <h5 class="mb-1">Hank Schrader</h5>
-                        <h6 class="text-muted mb-0">@@johnducky</h6>
-                    </div>
+        <a href="#" class="sidebar-link">
+            <div class="avatar avatar-lg">
+                <img src="~/assets/images/faces/2.jpg" />
+            </div>
+            <div class="name ms-4">
+                <h5 class="mb-1">Hank Schrader</h5>
+                <h6 class="text-muted mb-0">@@johnducky</h6>
+            </div>
+        </a>
+        <ul class="submenu">
+            <li class="submenu-item">
+                <a sp-controller="Home" asp-action="Index" class="sidebar-link">
+                    <i class="fas fa-edit"></i>
+                    <span>Profile</span>
                 </a>
-                <ul class="submenu">
-                    <li class="submenu-item">
-                        <a sp-controller="Home" asp-action="Index" class="sidebar-link">
-                            <i class="fas fa-edit"></i>
-                            <span>Profile</span>
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a sp-controller="Home" asp-action="Index" class="sidebar-link">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>-->
+            </li>
+            <li class="submenu-item">
+                <a sp-controller="Home" asp-action="Index" class="sidebar-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </li>
+        </ul>
+    </li>-->
 
             <li class="sidebar-title">@language.Getkey("Menu")</li>
 
@@ -151,6 +151,19 @@
                     </li>
                     <li class="submenu-item">
                         <a asp-controller="Service" asp-action="Upsert">@language.Getkey("Add") @language.Getkey("Service")</a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-item has-sub">
+                <a href="#" class="sidebar-link">
+                    <i class='fa fa-hotel'></i>
+                    <span>@language.Getkey("Reservation")</span>
+                </a>
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a asp-controller="Reservation" asp-action="Index">@language.Getkey("Display All")</a>
                     </li>
                 </ul>
             </li>
