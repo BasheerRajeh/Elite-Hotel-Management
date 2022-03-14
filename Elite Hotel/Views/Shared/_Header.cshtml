@@ -1,4 +1,8 @@
-﻿<!-- Start Top Nav -->
+﻿@using Microsoft.AspNetCore.Identity
+@using Elite.AppDbContext.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!-- Start Top Nav -->
 <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
     <div class="container text-light">
         <div class="w-100 d-flex justify-content-between">
@@ -67,8 +71,43 @@
                     <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                 </a>
                 <a class="nav-icon position-relative text-decoration-none" href="#">
-                    <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                    <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        
+
+                            <a href="#" class="sidebar-link">
+                                <div class="avatar avatar-lg">
+                                    
+                                </div>
+                                <div class="name ms-2">
+                                    <h6 class="mb-1">@UserManager.GetUserName(User)</h6>
+                                </div>
+                            </a>
+                            <ul class="submenu">
+                                @*            <li class="submenu-item">
+                        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="sidebar-link">
+                            <i class="fas fa-user-edit"></i>
+                            <span>@language.Getkey("Profile")</span>
+                        </a>
+                    </li>
+                                *@
+                                
+
+                                    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <button type="submit" class="sidebar-link">
+                                            <i class="fas fa-sign-out-alt"></i>
+                                            <span>Logout</span>
+                                        </button>
+                                    </form>
+                               
+                            </ul>
+                        
+                    }
+                    else
+                    {
+                        <a href="~/Identity/Account/Login">Log In</a>
+                    }
                 </a>
             </div>
         </div>

@@ -1,0 +1,82 @@
+﻿@model Elite.AppDbContext.Reservation
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<hr />
+<div class="row align-middle">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="display : none">
+                <label asp-for="ReservationNum" class="control-label"></label>
+                <input asp-for="ReservationNum" class="form-control" value="1" />
+                <span asp-validation-for="ReservationNum" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="RequestStatusId" class="control-label"></label>
+                <input asp-for="RequestStatusId" class="form-control" value="1" />
+                <span asp-validation-for="RequestStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="RoomId" class="control-label"></label>
+                <select asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomId"></select>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="Checkout" class="control-label"></label>
+                <input asp-for="Checkout" class="form-control" value="19.5" />
+                <span asp-validation-for="Checkout" class="text-danger"></span>
+            </div>
+            <div class="form-group" >
+                <label for="RequestDate" class="control-label">confirm date</label>
+                <input asp-for="RequestDate" class="form-control"  />
+                <span asp-validation-for="RequestDate" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label for="StartDate" class="control-label">Start Date</label>
+                        <input asp-for="StartDate" class="form-control" />
+                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class=" col-md-6">
+                    <div class="form-group">
+                        <label for="EndDate" class="control-label"> End Date</label>
+                        <input asp-for="EndDate" class="form-control" />
+                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="form-group" style="display: none">
+                <label asp-for="SoftDel" class="control-label" style="display: none"></label>
+                <input asp-for="SoftDel" class="form-control" />
+                <span asp-validation-for="SoftDel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-2">
+    </div>
+
+</div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
