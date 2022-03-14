@@ -50,6 +50,8 @@ namespace Elite
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+            services.AddSingleton<ServiceReference.WeatherServiceClient>();
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
