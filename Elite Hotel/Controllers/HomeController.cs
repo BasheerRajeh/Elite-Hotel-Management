@@ -1,4 +1,5 @@
 ﻿using DomainLayer.Pool;
+using Elite.Utility;
 using Elite_Hotel.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -12,18 +13,17 @@ namespace Elite_Hotel.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IServicePool _servicePool;
 
-        public HomeController(ILogger<HomeController> logger,IServicePool servicePool)
+        public HomeController(ILogger<HomeController> logger, IServicePool servicePool)
         {
-           
+            /*            WCFWeatherServiceReference.WeatherServiceClient weatherService = new WCFWeatherServiceReference.WeatherServiceClient();
+                        var so = weatherService.GetWeatherAsync(SD.APIKEY, "34.32132", "34.3213");
+            */
             _logger = logger;
             _servicePool = servicePool;
         }
 
-
-
         public IActionResult Index()
         {
-
             ViewModel items = new ViewModel();
             items.Categories = _servicePool.CategoryService.GetAll();
             items.hotels = _servicePool.HotelService.GetAll();
@@ -31,18 +31,16 @@ namespace Elite_Hotel.Controllers
             return View(items);
         }
 
-
-
         public IActionResult Contact()
         {
-
             return View();
         }
+
         public IActionResult AboutUs()
         {
-
             return View();
         }
+
         public IActionResult Privacy()
         {
             return View();

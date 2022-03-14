@@ -8,6 +8,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elite Hotel/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Elite Hotel/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elite Hotel/Elite Hotel.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Elite Hotel/Elite Hotel.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +35,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7D43B22E-B00E-43CD-8CB6-B2CA6EC30242/3b/707ed133/Binder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/71D8C0BC-E88F-4F06-9DBF-EC4345C4C10B/06/1f472f3e/SyncMethodInvoker.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -98,7 +101,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.WeatherService">
@@ -217,6 +220,7 @@
       <workItem from="1647099282320" duration="2511000" />
       <workItem from="1647101883572" duration="1482000" />
       <workItem from="1647171953529" duration="652000" />
+      <workItem from="1647227405738" duration="52000" />
     </task>
     <task id="LOCAL-00001" summary="change all IdentityUser to ApplicationUser">
       <created>1647012977541</created>
