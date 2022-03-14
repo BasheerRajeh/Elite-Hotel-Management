@@ -6,6 +6,6 @@ namespace WeatherService
     public class Weather
     {
         [DataMember]
-        public string Response { get; set; }
+        public string Result { get; set; }
     }
 }

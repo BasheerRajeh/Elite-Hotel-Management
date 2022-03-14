@@ -1,0 +1,17 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://localhost:9861/WeatherService.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, ServiceReference"
+    ],
+    "sync": true,
+    "targetFramework": "netcoreapp3.1",
+    "typeReuseMode": "All"
+  }
+}

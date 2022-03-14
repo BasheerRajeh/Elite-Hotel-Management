@@ -16,7 +16,7 @@ namespace WeatherService
     {
         public Weather GetWeather(string apiKey, string lon, string lat)
         {
-            /*var url =
+            var url =
                 $"http://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={apiKey}";
 
             var httpRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -31,12 +31,7 @@ namespace WeatherService
             }
             return new Weather
             {
-                Response = result
-            };*/
-
-            return new Weather
-            {
-                Response = "something"
+                Result = result
             };
         }
     }

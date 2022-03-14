@@ -1,8 +1,10 @@
 ﻿using Elite.AppDbContext;
+using Elite.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,14 +16,23 @@ namespace Elite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private ServiceReference.WeatherServiceClient weatherService;
 
         public HomeController(ILogger<HomeController> logger)
         {
+            weatherService = new ServiceReference.WeatherServiceClient();
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            var so = weatherService.GetWeather(SD.APIKEY, "34.32132", "34.3213");
+
+            var weather = so.Result;
+            dynamic s = JObject.Parse(weather);
+            ViewBag.Main = (string)(s.weather[0].main);
+            ViewBag.Description = (string)(s.weather[0].description);
+
             return View();
         }
 
