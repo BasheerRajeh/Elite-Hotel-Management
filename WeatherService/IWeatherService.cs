@@ -14,17 +14,10 @@ namespace WeatherService
     [ServiceContract]
     public interface IWeatherService
     {
-
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetWeather?apiKey={apiKey}&lon={lon}&lat={lat}")]
-        string GetWeather(string apiKey,string lon, string lat);
-        
-        // [OperationContract]
-        // [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetData?apiKey={apiKey}&q={city}")]
-        // string GetWeather(string apiKey,string city);
-        
-        
-        
-    }
+        Weather GetWeather(string apiKey, string lon, string lat);
 
+        // [OperationContract] [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate =
+        // "GetData?apiKey={apiKey}&q={city}")] string GetWeather(string apiKey,string city);
+    }
 }

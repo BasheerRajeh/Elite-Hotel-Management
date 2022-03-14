@@ -15,7 +15,7 @@ namespace Elite_Hotel.Controllers
 
         public HomeController(ILogger<HomeController> logger, IServicePool servicePool)
         {
-            /*            WCFWeatherServiceReference.WeatherServiceClient weatherService = new WCFWeatherServiceReference.WeatherServiceClient();
+            /*            ServiceReference.WeatherServiceClient weatherService = new ServiceReference.WeatherServiceClient();
                         var so = weatherService.GetWeatherAsync(SD.APIKEY, "34.32132", "34.3213");
             */
             _logger = logger;

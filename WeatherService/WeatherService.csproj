@@ -228,6 +228,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Weather.cs" />
     <Compile Include="WeatherService.svc.cs">
       <DependentUpon>WeatherService.svc</DependentUpon>
     </Compile>
