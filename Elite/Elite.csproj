@@ -29,6 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bootstrap.v3.Datetimepicker" Version="4.17.49" />
+    <PackageReference Include="Bootstrap.v3.Datetimepicker.CSS" Version="4.17.49" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.19" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />

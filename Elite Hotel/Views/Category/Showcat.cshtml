@@ -64,40 +64,37 @@
                     <div class="card-body">
                         <h1 class="h2">
                             @Model.Categories[0].Name</h>
-                        <p class="h3 py-2">@Model.Categories[0].PricePerNight $</p>
+                            <p class="h3 py-2">@Model.Categories[0].PricePerNight $</p>
 
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <h6>Capacity:</h6>
-                            </li>
-                            <li class="list-inline-item">
-                                <p class="text-muted"><strong>@Model.Categories[0].MaxCap</strong></p>
-                            </li>
-                        </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Capacity:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong>@Model.Categories[0].MaxCap</strong></p>
+                                </li>
+                            </ul>
 
 
 
-                        <h6>Service:</h6>
-                            @foreach(var ser in Model.Servicecats )
+                            <h6>Service:</h6>
+                            @foreach (var ser in Model.Servicecats)
                             {
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="ser.Id" name="@ser.Name" value="@ser.Name" checked>
                                     <label class="form-check-label">@ser.Name</label>
                                 </div>
                             }
+                           
 
-                        
 
-                        <form action="" method="GET">
-                            <input type="hidden" name="product-title" value="Activewear">
-                            <div class="row pb-3">
-                                <div class="col d-grid">
-                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="Reservation">Reservation Now</button>
+                                <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <div class="btn btn-success btn-lg"><a href="~/Reservations/Create">Reservation Now</a> </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
 
-                </div>
+</div>
             </div>
         </div>
     </div>
