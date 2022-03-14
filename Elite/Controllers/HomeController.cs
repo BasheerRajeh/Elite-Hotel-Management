@@ -33,6 +33,7 @@ namespace Elite.Controllers
             ViewBag.Main = (string)(s.weather[0].main);
             ViewBag.Description = (string)(s.weather[0].description);
 
+            var fjdslk = "fjdsl";
             return View();
         }
 
