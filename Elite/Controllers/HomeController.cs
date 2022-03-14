@@ -18,9 +18,9 @@ namespace Elite.Controllers
         private readonly ILogger<HomeController> _logger;
         private ServiceReference.WeatherServiceClient weatherService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ServiceReference.WeatherServiceClient service)
         {
-            weatherService = new ServiceReference.WeatherServiceClient();
+            weatherService = service;
             _logger = logger;
         }
 
