@@ -1,235 +1,110 @@
-﻿@section Style{
+﻿<br />
+<br />
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-        * element that contains the map. */
-        #map {
-            height: 100%;
-        }
+<div>
+    <input id="inputForAmmarMap" class="apply" style=" height:50px;width:200px; " type="text" placeholder="Enter Search Place">
+    <div id="divAmmarMap" style=" height:400px;width:900px;position:absolute;overflow:hidden;"></div>
+</div>
 
-        /* Optional: Makes the sample page fill the window. */
-        html,
-@*        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-*@
-        #description {
-            font-family: Roboto;
-            font-size: 15px;
-            font-weight: 300;
-        }
+<hr />
+<hr />
 
-        #infowindow-content .title {
-            font-weight: bold;
-        }
+<script>
+    function ammarMap() {
 
-        #infowindow-content {
-            display: none;
-        }
+        var map = new google.maps.Map(document.getElementById('divAmmarMap'), {
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+        });
 
-        #map #infowindow-content {
-            display: inline;
-        }
+        var defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(33.55061536354439, 36.30838745316579),
+            new google.maps.LatLng(33.5567979074849, 36.322470336389024)
+        );
+        map.fitBounds(defaultBounds);
 
-        .pac-card {
-            background-color: #fff;
-            border: 0;
-            border-radius: 2px;
-            box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
-            margin: 10px;
-            padding: 0 0.5em;
-            font: 400 18px Roboto, Arial, sans-serif;
-            overflow: hidden;
-            font-family: Roboto;
-            padding: 0;
-        }
+        var input = (document.getElementById('inputForAmmarMap'));
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
+        var searchBox = new google.maps.places.SearchBox((input));
 
-        #pac-container {
-            padding-bottom: 12px;
-            margin-right: 12px;
-        }
+        google.maps.event.addListener(searchBox, 'places_changed', function () {
+            var places = searchBox.getPlaces();
 
-        .pac-controls {
-            display: inline-block;
-            padding: 5px 11px;
-        }
-
-            .pac-controls label {
-                font-family: Roboto;
-                font-size: 13px;
-                font-weight: 300;
+            if (places.length == 0) {
+                map.fitBounds(defaultBounds);
             }
+            else {
 
-        #pac-input {
-            background-color: #fff;
-            font-family: Roboto;
-            font-size: 15px;
-            font-weight: 300;
-            margin-left: 12px;
-            padding: 0 11px 0 13px;
-            text-overflow: ellipsis;
-            width: 400px;
-        }
-
-            #pac-input:focus {
-                border-color: #4d90fe;
-            }
-
-        #title {
-            color: #fff;
-            background-color: #4d90fe;
-            font-size: 25px;
-            font-weight: 500;
-            padding: 6px 12px;
-        }
-
-        #target {
-            width: 345px;
-        }
-    </style>
-
-    <script>
-
-        // This example adds a search box to a map, using the Google Place Autocomplete
-        // feature. People can enter geographical searches. The search box will return a
-        // pick list containing a mix of places and predicted search terms.
-        // This example requires the Places library. Include the libraries=places
-        // parameter when you first load the API. For example:
-        // <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&libraries=places">
-        function initAutocomplete() {
-            const map = new google.maps.Map(document.getElementById("map"), {
-                center: { lat: -33.8688, lng: 151.2195 },
-                zoom: 13,
-                mapTypeId: "roadmap",
-            });
-            // Create the search box and link it to the UI element.
-            const input = document.getElementById("pac-input");
-            const searchBox = new google.maps.places.SearchBox(input);
-
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-            // Bias the SearchBox results towards current map's viewport.
-            map.addListener("bounds_changed", () => {
-                searchBox.setBounds(map.getBounds());
-            });
-
-            let markers = [];
-
-            // Listen for the event fired when the user selects a prediction and retrieve
-            // more details for that place.
-            searchBox.addListener("places_changed", () => {
-                const places = searchBox.getPlaces();
-
-                if (places.length == 0) {
-                    return;
-                }
-
-                // Clear out the old markers.
-                markers.forEach((marker) => {
-                    marker.setMap(null);
-                });
-                markers = [];
-
-                // For each place, get the icon, name and location.
-                const bounds = new google.maps.LatLngBounds();
-
-                places.forEach((place) => {
-                    if (!place.geometry || !place.geometry.location) {
-                        console.log("Returned place contains no geometry");
-                        return;
-                    }
-
-                    const icon = {
+                var markers = [];
+                var bounds = new google.maps.LatLngBounds();
+                for (var i = 0, place; place = places[i]; i++) {
+                    var image = {
                         url: place.icon,
                         size: new google.maps.Size(71, 71),
                         origin: new google.maps.Point(0, 0),
                         anchor: new google.maps.Point(17, 34),
-                        scaledSize: new google.maps.Size(25, 25),
+                        scaledSize: new google.maps.Size(25, 25)
                     };
 
-                    // Create a marker for each place.
-                    markers.push(
-                        new google.maps.Marker({
-                            map,
-                            icon,
-                            title: place.name,
-                            position: place.geometry.location,
-                        })
-                    );
-                    if (place.geometry.viewport) {
-                        // Only geocodes have viewport.
-                        bounds.union(place.geometry.viewport);
-                    } else {
-                        bounds.extend(place.geometry.location);
-                    }
-                });
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        icon: image,
+                        title: place.name,
+                        position: place.geometry.location
+                    });
+
+                    markers.push(marker);
+
+                    bounds.extend(place.geometry.location);
+                }
+
                 map.fitBounds(bounds);
-            });
+            }
+        });
 
-        }
-    </script>
+        google.maps.event.addListener(map, 'bounds_changed', function () {
+            var bounds = map.getBounds();
+            searchBox.setBounds(bounds);
+        });
 
-}
+    }
+</script>
 
-<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="w-100 pt-1 mb-5 text-right">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="" method="get" class="modal-content modal-body border-0 p-0">
-            <div class="input-group mb-2">
-                <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                <button type="submit" class="input-group-text bg-success text-light">
-                    <i class="fa fa-fw fa-search text-white"></i>
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<section class="bg-success py-5">
-    <div class="container">
-        <div class="row align-items-center py-5">
-            <div class="col-md-8 text-white">
-                <h1>About Us</h1>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-            </div>
-            <div class="col-md-4">
-                <img src="assets/img/about-hero.svg" alt="About Hero">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Our Location</h5>
-                    <input id="pac-input"
-                           class="controls"
-                           type="text"
-                           placeholder="Search Box" />
-                </div>
-                <div class="card-body h-100">
-                    <div id="map" style="position: inherit !important;"></div>
-                    @*
-                        <div class="googlemaps">
-                                          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.6091242787!2d107.57311654129782!3d-6.903273917028756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung%2C%20Bandung%20City%2C%20West%20Java!5e0!3m2!1sen!2sid!4v1633023222539!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                      </div>
-                    *@
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNujtx1JxpWTI1KoOk_1WYXDzq8pXr_r0&callback=initAutocomplete&libraries=places&v=weekly&channel=2"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNujtx1JxpWTI1KoOk_1WYXDzq8pXr_r0&language=en&libraries=places&&callback=ammarMap"
         async></script>
+
+<script>
+    /*
+    var txtbox = document.getElementById('inputForAmmarMap');
+
+    function enterfun() {
+
+        var ev = new KeyboardEvent('keydown', {
+            altKey: false,
+            bubbles: true,
+            cancelBubble: false,
+            cancelable: true,
+            charCode: 0,
+            code: "Enter",
+            composed: true,
+            ctrlKey: false,
+            currentTarget: null,
+            defaultPrevented: true,
+            detail: 0,
+            eventPhase: 0,
+            isComposing: false,
+            isTrusted: true,
+            key: "Enter",
+            keyCode: 13,
+            location: 0,
+            metaKey: false,
+            repeat: false,
+            returnValue: false,
+            shiftKey: false,
+            type: "keydown",
+            which: 13
+        });
+
+        txtbox.dispatchEvent(ev);
+    }
+    */
+</script>

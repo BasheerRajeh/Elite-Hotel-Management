@@ -20,12 +20,12 @@ namespace Elite.Controllers
         public IActionResult Detail(int id)
         {
             var roomStatus = _unitOfWork.RoomStatus.GetById(id);
-            if (roomStatus is null)
+            if (roomStatus == null)
             {
                 return RedirectToAction(nameof(Index));
             }
 
-            return View("Detail",roomStatus);
+            return View("Detail", roomStatus);
         }
 
         [HttpDelete]

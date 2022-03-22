@@ -1,6 +1,5 @@
 ﻿@using Elite_Hotel.Controllers
 @model ViewModel
-
 <!-- Start Banner Hero -->
 <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
     <ol class="carousel-indicators">
@@ -12,76 +11,75 @@
         <div class="carousel-item active">
             <div class="container">
                 <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                                <img class="img-fluid" src="@Model.hotels[0].ImageUrl" alt="">
-                        
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left align-self-center">
-                            <h1 class="h1 text-success"><b>Elite</b> Hotelse</h1>
-                            <h3 class="h2">Tiny and Perfect Hotelse Reservations</h3>
-                            <p>
-                                Our all-inclusive hotels and resorts are in some of the world’s
-                                most sought-after destinations. With meals, amenities, guest activities, and nightlife options
-                                all included under one simple rate, you’ll have even more time to experience your dream getaway.
-                            </p>
-                        </div>
-                    </div>
+                    @*                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                    *@                                                <img class="img-fluid" src="@Model.hotels[0].ImageUrl" alt="">
                 </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                                <img class="img-fluid" src="@Model.hotels[1].ImageUrl" alt="">
-                        
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left">
-                            <h1 class="h1">New Hotels</h1>
-                            <h3 class="h2">Explore hotels</h3>
-                            <p>
-                                Explore our newest hotels around the world ready to welcome you for an
-                                exceptional stay. From <strong>city-center</strong> getaways to relaxing beach escapes, Hilton is expanding to
-                                the cities you've been dreaming of. New memories are waiting to be made at our newest hotels.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="container">
-                <div class="row p-5">
-                    <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                                                <img class="img-fluid" src="@Model.hotels[2].ImageUrl" alt="">
-                        
-                    </div>
-                    <div class="col-lg-6 mb-0 d-flex align-items-center">
-                        <div class="text-align-left">
-                            <h1 class="h1">Pet-Friendly Stays</h1>
-                            <h3 class="h2">Pets are part of the family </h3>
-                            <p>
-
-                                Instead of leaving your furry friends home,
-                                bring them along to one of our pet-friendly hotels.
-                                Travel is more fun when everyone
-                                (and every pet!) gets to join. Whatever your plans,
-                                your pets are sure to enjoy the adventure with Hilton.
-                            </p>
-                        </div>
+                <div class="col-lg-6 mb-0 d-flex align-items-center">
+                    <div class="text-align-left align-self-center">
+                        <h1 class="h1 text-success"><b>Elite</b> Hotelse</h1>
+                        <h3 class="h2">Tiny and Perfect Hotelse Reservations</h3>
+                        <p>
+                            Our all-inclusive hotels and resorts are in some of the world’s
+                            most sought-after destinations. With meals, amenities, guest activities, and nightlife options
+                            all included under one simple rate, you’ll have even more time to experience your dream getaway.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-        <i class="fas fa-chevron-left"></i>
-    </a>
-    <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-        <i class="fas fa-chevron-right"></i>
-    </a>
+    <div class="carousel-item">
+        <div class="container">
+            <div class="row p-5">
+                <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                    @*                                                <img class="img-fluid" src="@Model.hotels[1].ImageUrl" alt="">
+                    *@
+                </div>
+                <div class="col-lg-6 mb-0 d-flex align-items-center">
+                    <div class="text-align-left">
+                        <h1 class="h1">New Hotels</h1>
+                        <h3 class="h2">Explore hotels</h3>
+                        <p>
+                            Explore our newest hotels around the world ready to welcome you for an
+                            exceptional stay. From <strong>city-center</strong> getaways to relaxing beach escapes, Hilton is expanding to
+                            the cities you've been dreaming of. New memories are waiting to be made at our newest hotels.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <div class="container">
+            <div class="row p-5">
+                <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                    @*                                                <img class="img-fluid" src="@Model.hotels[2].ImageUrl" alt="">
+                    *@
+                </div>
+                <div class="col-lg-6 mb-0 d-flex align-items-center">
+                    <div class="text-align-left">
+                        <h1 class="h1">Pet-Friendly Stays</h1>
+                        <h3 class="h2">Pets are part of the family </h3>
+                        <p>
+
+                            Instead of leaving your furry friends home,
+                            bring them along to one of our pet-friendly hotels.
+                            Travel is more fun when everyone
+                            (and every pet!) gets to join. Whatever your plans,
+                            your pets are sure to enjoy the adventure with Hilton.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+    <i class="fas fa-chevron-left"></i>
+</a>
+<a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+    <i class="fas fa-chevron-right"></i>
+</a>
 </div>
 <!-- End Banner Hero -->
 <!-- Start Categories of The Month -->
@@ -121,7 +119,8 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="/images/serviceCat/054cf135-6535-4213-bd02-664f0214c9fd.jpg" class="card-img-top" alt="...">
+                        @*                        <img src="/images/serviceCat/054cf135-6535-4213-bd02-664f0214c9fd.jpg" class="card-img-top" alt="...">
+                        *@
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -145,7 +144,8 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="~/images/serviceCat/065e8742-b2e2-4f65-b993-1e31413ba3bb.jpg" class="card-img-top" alt="...">
+                        @*                        <img src="~/images/serviceCat/065e8742-b2e2-4f65-b993-1e31413ba3bb.jpg" class="card-img-top" alt="...">
+                        *@
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">
@@ -169,7 +169,8 @@
             <div class="col-12 col-md-4 mb-4">
                 <div class="card h-100">
                     <a href="shop-single.html">
-                        <img src="~/images/serviceCat/7035bb44-c83a-4da2-9126-95cf16f777c8.jpg" class="card-img-top" alt="...">
+                        @*                        <img src="~/images/serviceCat/7035bb44-c83a-4da2-9126-95cf16f777c8.jpg" class="card-img-top" alt="...">
+                        *@
                     </a>
                     <div class="card-body">
                         <ul class="list-unstyled d-flex justify-content-between">

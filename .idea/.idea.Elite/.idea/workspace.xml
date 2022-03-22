@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8536868-6cb8-418b-9c23-5353323e415c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Elite/Controllers/RoomStatusController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Elite/Views/RoomStatus/Detail.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Elite/Views/RoomStatus/Index.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Elite/Views/RoomStatus/Upsert.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Elite/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Elite.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Elite.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,9 +88,9 @@
       <option value="$PROJECT_DIR$/Elite/Pages/RoomStatus/Index.cshtml" />
       <option value="$PROJECT_DIR$/Elite/Views/RoomStatus/Detail.cshtml" />
       <option value="$PROJECT_DIR$/Elite/Views/RoomStatus/Upsert.cshtml" />
-      <option value="$PROJECT_DIR$/Elite/Controllers/RoomStatusController.cs" />
       <option value="$PROJECT_DIR$/TestRoomStatus/TestRoomStatus.csproj" />
       <option value="$PROJECT_DIR$/TestRoomStatus/RoomStatusTest.cs" />
+      <option value="$PROJECT_DIR$/Elite/Controllers/RoomStatusController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="24GqRj2NnDqMIYNkNpNQacDzi18" />
@@ -232,7 +227,7 @@
       <workItem from="1647171953529" duration="652000" />
       <workItem from="1647227405738" duration="52000" />
       <workItem from="1647530554545" duration="3829000" />
-      <workItem from="1647540447657" duration="2565000" />
+      <workItem from="1647540447657" duration="2972000" />
     </task>
     <task id="LOCAL-00001" summary="change all IdentityUser to ApplicationUser">
       <created>1647012977541</created>
@@ -290,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647102687486</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Adding Testing for RoomStatusController.cs">
+      <created>1647543169035</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1647543169036</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +339,8 @@
     <MESSAGE value="adding served and reject in reservation repository and finish index without details" />
     <MESSAGE value="finishing reservation from admin" />
     <MESSAGE value="adding Weather service" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding Weather service" />
+    <MESSAGE value="Adding Testing for RoomStatusController.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Testing for RoomStatusController.cs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
